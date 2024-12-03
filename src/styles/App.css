@@ -1,0 +1,166 @@
+#root {
+
+  margin: 0 auto;
+  padding:2rem;
+  text-align: center;
+  --royal-blue-traditional: #0a2463ff;
+  --slate-gray: #6e7e85ff;
+  --honeydew: #e5f4e3ff;
+  --lavender-pink: #efaac4ff;
+  --pink: #ffc4d1ff;
+  font-family: "Host Grotesk", sans-serif;
+}
+body{
+  margin: 0;
+}
+.navBar{
+  display:grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background-color: var(--lavender-pink);
+  color: var(--royal-blue-traditional);
+  font-size: 20px;
+  padding: 10px 20px;
+}
+.navBar>.routes,.navBar>.user{
+  display: flex;
+  gap:15px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.routes>a,.user>a{
+  color: var(--royal-blue-traditional);
+  display: flex;
+  gap:5px;
+  align-items: center;
+}
+a{
+  text-decoration: none; /* no underline */
+}
+.user>button{
+  background-color: var(--royal-blue-traditional);
+  color: var(--honeydew);
+  font-size: 15px;
+  padding: 6px;
+  border-radius: 5px;
+}
+.user>button:hover {
+  background: var(--slate-gray)
+}
+.homepage{
+  padding:10px;
+  
+}
+.postCards>ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:10px;
+  padding:10px;
+}
+.postCards>ul>li{
+  padding:25px;
+}
+li.published{
+  background-color: var(--pink);
+}
+li.notPublished{
+  background-color: var(--slate-gray);
+}
+.postCards>ul>li>a{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  color:rgb(34, 34, 34);
+  font-size: 15px;
+}
+h2{
+  color: var(--royal-blue-traditional);
+}
+.postpage>.post{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.post>.header{
+  display: flex;
+  align-items: center;
+  gap:20px;
+}
+.header>.buttons{
+  display: flex;
+  gap:5px
+}
+.post>.imgPlaceholder{
+  width: 300px;
+  height: 300px;
+  background-color: var(--slate-gray);
+}
+.post>.author,.post>.date,.commentCard>.authorAndDate{
+  font-size: 12px;
+}
+.post>.text{
+  font-size: 20px;
+}
+.formContainer>form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:5px;
+}
+.formContainer>form>textarea{
+  min-width: 300px
+}
+ul{
+  list-style-type: none;
+}
+.commentCards>ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px;
+}
+.commentCard{
+  background-color: rgb(231, 229, 229);
+  padding:10px;
+  min-width: 500px;
+
+}
+.commentCard>.buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap:5px;
+}
+.commentCard>.authorAndDate{
+  display: flex;
+  gap:10px;
+}
+.createPost>form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:20px;
+}
+.createPost>form>.title,.createPost>form>.text{
+  display: flex;
+  gap:5px;
+}
+input#title,textarea{
+  width: 500px;
+}
+.createPost>form>.text>textarea{
+  height: 500px;
+}
+.signUp>form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px
+}
+.signUp>form>*{
+  display: flex;
+  justify-content: center;
+  gap:10px;
+}
+*:invalid{
+  border-color: red;
+}
