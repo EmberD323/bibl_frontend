@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Suggestions from "./Partials/Suggestions"
 import CurrentlyReading from "./Partials/CurrentlyReading"
 
 export default function HomePage (){
@@ -47,6 +47,7 @@ export default function HomePage (){
         <div className="homepage">
             <h2>Homepage</h2>
             <CurrentlyReading lists={lists}/>
+            <Suggestions/>
             {/* <CurrentlyReading/>
             <Suggestions/>
             <Feed/> */}
