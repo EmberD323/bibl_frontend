@@ -33,7 +33,7 @@ function NavBar({token,setToken}) {
     else{
         return(
             <div className="navBar">
-                <h1 className="heading">Messaging App</h1>
+                <h1 className="heading">Bibl</h1>
                 <div className="routes">
                     <Link to="homepage">
                         <div>Home</div>

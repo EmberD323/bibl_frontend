@@ -2,6 +2,7 @@ import App from '../App.jsx';
 import HomePage from '../components/Homepage.jsx';
 import Signup from '../components/Users/Signup.jsx';
 import Login from '../components/Users/Login.jsx';
+import SearchResult from '../components/SearchResult.jsx';
 
 
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
       {path: "homepage",element: <HomePage/>},
       {path: "signup",element: <Signup/>},
       {path: "login",element: <Login/>},
+      {path: "searchResult",element: <SearchResult/>},
       
       
     ]

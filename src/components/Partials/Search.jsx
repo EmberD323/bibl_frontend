@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {useNavigate } from "react-router-dom";
 
 export default function Search() {
     const[advanceVisibility,setAdvanceVisibility] = useState(false);
@@ -21,9 +22,11 @@ export default function Search() {
     function handleIsbnChange(e){
         setISBN(e.target.value)
     }
+    const navigate = useNavigate()
+
     async function handleBasicSearch(e){
         e.preventDefault();
-        const response = await fetch("https://www.googleapis.com/books/v1/volumes?q="+query,{
+        const response = await fetch("https://www.googleapis.com/books/v1/volumes?q="+query+"&maxResults=40",{
             method: "GET",
         })
         if(response.status != 200){//if theres errors
@@ -33,6 +36,9 @@ export default function Search() {
         else{
             const thisSearchResult = await response.json()
             setSearchResult(thisSearchResult)
+            navigate('../searchResult',{state:{thisSearchResult}});
+
+            //navigate to search result page with search results - check old projects for use location
         }
     }
     function handleAdvanceReveal(){
@@ -42,17 +48,16 @@ export default function Search() {
         e.preventDefault();
         let searchTerm="https://www.googleapis.com/books/v1/volumes?q=";
         if(author =="" && title =="" && isbn==""){return}
-        if(author =="" && title =="" && isbn !=""){searchTerm = searchTerm+"isbn:"+isbn}
-        if(author =="" && isbn =="" && title !=""){searchTerm = searchTerm+"intitle:"+title}
-        if(title =="" && isbn =="" && author !=""){searchTerm = searchTerm+"inauthor:"+author}
-        if(title =="" && isbn !="" && author !=""){searchTerm = searchTerm+"inauthor:"+author+"+isbn:"+isbn}
-        if(author =="" && title !="" && isbn !=""){searchTerm = searchTerm+"intitle:"+title+"+isbn:"+isbn}
-        if(isbn ==""&& title !=""&& author !=""){searchTerm = searchTerm+"intitle:"+title+"+inauthor:"+author}
-        if(isbn !=""&& title !=""&& author !=""){searchTerm = searchTerm+"intitle:"+title+"+inauthor:"+author+"+isbn:"+isbn}        
+        if(author =="" && title =="" && isbn !=""){searchTerm = searchTerm+"isbn:"+isbn+"&maxResults=40"}
+        if(author =="" && isbn =="" && title !=""){searchTerm = searchTerm+"intitle:"+title+"&maxResults=40"}
+        if(title =="" && isbn =="" && author !=""){searchTerm = searchTerm+"inauthor:"+author+"&maxResults=40"}
+        if(title =="" && isbn !="" && author !=""){searchTerm = searchTerm+"inauthor:"+author+"+isbn:"+isbn+"&maxResults=40"}
+        if(author =="" && title !="" && isbn !=""){searchTerm = searchTerm+"intitle:"+title+"+isbn:"+isbn+"&maxResults=40"}
+        if(isbn ==""&& title !=""&& author !=""){searchTerm = searchTerm+"intitle:"+title+"+inauthor:"+author+"&maxResults=40"}
+        if(isbn !=""&& title !=""&& author !=""){searchTerm = searchTerm+"intitle:"+title+"+inauthor:"+author+"+isbn:"+isbn+"&maxResults=40"}        
         const response = await fetch(searchTerm,{
             method: "GET",
         })
-        console.log(response)
         if(response.status != 200){//if theres errors
             //const errors = await response.json();
             console.log(response)
@@ -60,6 +65,8 @@ export default function Search() {
         else{
             const thisSearchResult = await response.json()
             setSearchResult(thisSearchResult)
+            navigate('../searchResult',{state:{thisSearchResult}});
+
         }
     }
    //want book to include list info
