@@ -20,7 +20,7 @@ export default function CurrentlyReading({lists}) {
                     console.log(book)
                     return(
                         <li key={book.book.id} >
-                            <div>Image Placeholder</div>
+                            <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>
                             <div className="title" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.book.title}</div>
                             <div className="author" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.book.author_first_name} {book.book.author_last_name}</div>
                         </li>

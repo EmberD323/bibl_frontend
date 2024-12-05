@@ -54,7 +54,6 @@ export default function Suggestions({}) {
                     console.log(book)
                     return(
                         <li key={book.id} >
-                            <div>Image Placeholder</div>
                             <img src={book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>
                             <div className="title" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.title}</div>
                             <div className="author" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.author_name} </div>
