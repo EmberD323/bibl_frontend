@@ -2,7 +2,6 @@ import { Link,useNavigate} from "react-router-dom";
 
 export default function CurrentlyReading({lists}) {
     if(lists == null){return}
-    console.log(lists)
 
     const CurrentlyReadingList = (lists.filter((list) => list.name == "Currently reading"))[0];
     function handleBookOpen(e){

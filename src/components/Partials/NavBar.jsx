@@ -1,4 +1,5 @@
 import { Link,useNavigate} from "react-router-dom";
+import Search from "./Search"
 
 function NavBar({token,setToken}) {
     const navigate = useNavigate()
@@ -41,7 +42,7 @@ function NavBar({token,setToken}) {
                     {/* <Link to="mybooks"> */}
                         <div>My Books</div>
                     {/* </Link> */}
-                    <div>Search</div>
+                    <Search/>
                 </div>
                 
                 <div className="user">

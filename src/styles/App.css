@@ -7,3 +7,9 @@
 body{
   margin: 0;
 }
+.advancedSearch#false{
+  display: none;
+}
+.advancedSearch#true{
+  display: block;
+}

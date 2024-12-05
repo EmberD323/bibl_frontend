@@ -8,7 +8,7 @@ export default function Feed({lists}) {
 
    //want book to include list info
     return (
-       <div className="currentlyReading">
+       <div className="feed">
            <div className="title">My Feed</div>
            <ul>
                 {allBooks.map((book) => {
