@@ -5,7 +5,6 @@ export default function CurrentlyReading({lists}) {
     console.log(lists)
 
     const CurrentlyReadingList = (lists.filter((list) => list.name == "Currently reading"))[0];
-    console.log(CurrentlyReadingList)
     function handleBookOpen(e){
        console.log(e)
     }
@@ -17,7 +16,6 @@ export default function CurrentlyReading({lists}) {
            <div className="title" onClick={handleCurrentlyReadingOpen}>Currently Reading</div>
            <ul>
                 {CurrentlyReadingList.books.map((book) => {
-                    console.log(book)
                     return(
                         <li key={book.book.id} >
                             <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>

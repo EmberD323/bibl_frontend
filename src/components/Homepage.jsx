@@ -2,6 +2,8 @@ import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Suggestions from "./Partials/Suggestions"
 import CurrentlyReading from "./Partials/CurrentlyReading"
+import Feed from "./Partials/Feed"
+
 
 export default function HomePage (){
     const [token,setToken,edit,setEdit] = useOutletContext();
@@ -48,6 +50,7 @@ export default function HomePage (){
             <h2>Homepage</h2>
             <CurrentlyReading lists={lists}/>
             <Suggestions/>
+            <Feed lists={lists}/>
             {/* <CurrentlyReading/>
             <Suggestions/>
             <Feed/> */}

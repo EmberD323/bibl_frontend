@@ -36,7 +36,6 @@ export default function Suggestions({}) {
     //       //.finally(setLoading(false));
     // },[])
 
-    console.log(suggestionData)
     function handleBookOpen(e){
         console.log(e)
         //action
@@ -51,7 +50,6 @@ export default function Suggestions({}) {
        <div className="suggestions">
            <div className="title" >Suggestions</div>
            {suggestionData.map((book) => {
-                    console.log(book)
                     return(
                         <li key={book.id} >
                             <img src={book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>
