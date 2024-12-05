@@ -1,0 +1,100 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Signup component > renders as per snapshot 1`] = `
+<div>
+  <div
+    class="signUp"
+  >
+    <h2>
+      Sign up
+    </h2>
+    <form>
+      <div
+        class="firstName"
+      >
+        <label
+          for="first_name"
+        >
+          First Name
+        </label>
+        <input
+          id="first_name"
+          name="first_name"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="lastName"
+      >
+        <label
+          for="last_name"
+        >
+          Last Name
+        </label>
+        <input
+          id="last_name"
+          name="last_name"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="username"
+      >
+        <label
+          for="username"
+        >
+          Email
+        </label>
+        <input
+          id="username"
+          name="username"
+          required=""
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        class="password"
+      >
+        <label
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          required=""
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        class="passportConfirm"
+      >
+        <label
+          for="passwordConfirm"
+        >
+          Password
+        </label>
+        <input
+          id="passwordConfirm"
+          name="passwordConfirm"
+          required=""
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+`;
