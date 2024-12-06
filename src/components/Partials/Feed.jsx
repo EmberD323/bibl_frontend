@@ -1,5 +1,5 @@
 import { Link,useNavigate,useOutletContext} from "react-router-dom";
-
+import FeedBook from "./FeedBook";
 export default function Feed() {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     if(lists == null){return}
@@ -13,7 +13,7 @@ export default function Feed() {
     const sortedBooks = allBooks.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
     console.log(sortedBooks)
 
-   //want book to include list info
+   //make books clickable
     return (
        <div className="feed">
            <div className="title">My Feed</div>
@@ -21,9 +21,7 @@ export default function Feed() {
                 {sortedBooks.map((book) => {
                     return(
                         <li key={book.book.id} >
-                            <div>You added {book.book.title} to {book.list.name} </div>
-                            <div>Date: {book.assignedAt}</div>
-                            <img src={book.book.imageURL} alt="book_cover" />
+                            <FeedBook book={book}/>
                         </li>
                     )
                 })}
