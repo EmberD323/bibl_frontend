@@ -1,5 +1,5 @@
 import { useNavigate,useOutletContext } from "react-router-dom";
-
+import AddBook from "./AddBook";
 export default function Book({book,selectedList,setSelectedList}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
 
@@ -39,6 +39,7 @@ export default function Book({book,selectedList,setSelectedList}) {
         <div className="author" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.author_name}</div>
         <div>{dayMonthYear}</div>
         <button onClick={handleRemoveFromList}>Remove from list</button>
+        <AddBook book={book}/>
         </>
     )
  
