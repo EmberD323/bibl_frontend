@@ -6,10 +6,8 @@ import Feed from "./Partials/Feed"
 
 
 export default function HomePage (){
-    const [token,setToken,edit,setEdit] = useOutletContext();
-    const [lists,setLists]=useState(null);
-    const [error,setError]=useState(null);
-    const [loading,setLoading] = useState(true);
+    const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+    
     //if not logged in
     if(typeof token == "object"){
         return (
@@ -25,26 +23,7 @@ export default function HomePage (){
           )
     }
     //get all lists by user
-    useEffect(()=>{
-        fetch(import.meta.env.VITE_BACKEND +"/lists",{
-            method: "GET",
-            mode:"cors",
-            headers: {
-              "Content-Type": "application/json",
-              "authorization": "Bearer " +token
-            }
-          })
-          .then((response)=>response.json())
-          .then((json)=>{
-            setLists(json)
-          })
-          .catch((error)=>setError(error))
-          .finally(setLoading(false));
-    },[edit])
-    
-
-  if(error) return <p>Error</p>
-  if(loading) return <p>Loading</p>
+ 
     return (
         <div className="homepage">
             <h2>Homepage</h2>

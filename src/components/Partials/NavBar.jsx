@@ -36,12 +36,11 @@ function NavBar({token,setToken}) {
                 <h1 className="heading">Bibl</h1>
                 <div className="routes">
                     <Link to="homepage">
-                        <div>Home</div>
+                        Home
                     </Link>
 
-                    {/* <Link to="mybooks"> */}
-                        <div>My Books</div>
-                    {/* </Link> */}
+                    <Link to="myBooks">My Books
+                    </Link>
                     <Search/>
                 </div>
                 

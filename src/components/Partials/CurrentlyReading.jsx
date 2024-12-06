@@ -19,7 +19,7 @@ export default function CurrentlyReading({lists}) {
                         <li key={book.book.id} >
                             <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>
                             <div className="title" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.book.title}</div>
-                            <div className="author" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.book.author_first_name} {book.book.author_last_name}</div>
+                            <div className="author" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.book.author_name} </div>
                         </li>
                     )
                 })}
