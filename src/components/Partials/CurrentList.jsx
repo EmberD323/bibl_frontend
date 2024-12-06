@@ -17,7 +17,6 @@ export default function CurrentList ({selectedList}){
         </div>
     );
   
-    console.log(selectedList.books)   
     
     return (
         <div className="currentList">
@@ -26,7 +25,7 @@ export default function CurrentList ({selectedList}){
                 {selectedList.books.map((book) => {
                     return(
                         <li key={book.book.id} >
-                            <Book book={book}/>
+                            <Book bookName={book}/>
                             
                         </li>
                     )
