@@ -7,9 +7,12 @@
 body{
   margin: 0;
 }
-.advancedSearch#false{
+.advancedSearch#false,.bookAddedAnnounce#true{
   display: none;
 }
-.advancedSearch#true{
+.advancedSearch#true,.bookAddedAnnounce#false{
   display: block;
+}
+.homepage>.content{
+  display:flex;
 }

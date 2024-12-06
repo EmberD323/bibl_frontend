@@ -1,6 +1,9 @@
+import { Link,useNavigate,useOutletContext} from "react-router-dom";
 
-export default function Feed({lists}) {
+export default function Feed() {
+    const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     if(lists == null){return}
+
     const allBooks=[];
     lists.map((list) =>{
         list.books.map((book)=>allBooks.push(book))

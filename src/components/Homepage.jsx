@@ -6,7 +6,6 @@ import Feed from "./Partials/Feed"
 
 export default function HomePage (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    if(lists == null) return;
 
     //if not logged in
     if(typeof token == "object"){
@@ -25,9 +24,11 @@ export default function HomePage (){
     return (
         <div className="homepage">
             <h2>Homepage</h2>
-            <CurrentlyReading lists={lists}/>
-            <Suggestions/>
-            <Feed lists={lists}/>
+            <div className="content">
+              <CurrentlyReading/>
+              <Suggestions/> 
+              <Feed/>
+            </div>
         </div>    
     )
 }

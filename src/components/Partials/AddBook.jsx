@@ -5,6 +5,9 @@ import { useState } from "react";
 export default function AddBook({book}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const [selectedList, setSelectedList] = useState("")
+    const [hideAdded, setHideAdded] = useState(true)
+
+
     async function handleBookAdd(e){
         e.preventDefault()
         let response;
@@ -44,6 +47,7 @@ export default function AddBook({book}) {
         }
         else{
             setEdit(!edit);
+            setHideAdded(!hideAdded)
         }
         
 
@@ -68,6 +72,7 @@ export default function AddBook({book}) {
             })}
             </select>
             <button type="submit">Add to List</button>
+            <div className="bookAddedAnnounce" id={String(hideAdded)}>Book added to {selectedList.name}!</div>
 
 
         </form>

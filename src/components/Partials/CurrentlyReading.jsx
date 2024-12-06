@@ -1,7 +1,9 @@
-import { Link,useNavigate} from "react-router-dom";
+import { Link,useNavigate,useOutletContext} from "react-router-dom";
 import CurrentlyReadingBook from "./CurrentlyReadingBook";
 
-export default function CurrentlyReading({lists}) {
+export default function CurrentlyReading() {
+    const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+
     if(lists == null){return}
 
     const CurrentlyReadingList = (lists.filter((list) => list.name == "Currently reading"))[0];
