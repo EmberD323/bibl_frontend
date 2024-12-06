@@ -23,9 +23,11 @@ export default function CurrentList ({selectedList}){
             <h2>Current List</h2>
             <ul>
                 {selectedList.books.map((book) => {
+                    console.log(book)
                     return(
                         <li key={book.book.id} >
-                            <Book bookName={book}/>
+                            
+                            <Book book={book}/>
                             
                         </li>
                     )

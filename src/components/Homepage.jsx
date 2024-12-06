@@ -1,5 +1,4 @@
 import { useOutletContext } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Suggestions from "./Partials/Suggestions"
 import CurrentlyReading from "./Partials/CurrentlyReading"
 import Feed from "./Partials/Feed"
@@ -7,7 +6,8 @@ import Feed from "./Partials/Feed"
 
 export default function HomePage (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    
+    if(lists == null) return;
+
     //if not logged in
     if(typeof token == "object"){
         return (
@@ -22,20 +22,13 @@ export default function HomePage (){
            </div>
           )
     }
-    //get all lists by user
- 
     return (
         <div className="homepage">
             <h2>Homepage</h2>
             <CurrentlyReading lists={lists}/>
             <Suggestions/>
             <Feed lists={lists}/>
-            {/* <CurrentlyReading/>
-            <Suggestions/>
-            <Feed/> */}
-        </div>
-        
-
+        </div>    
     )
 }
 

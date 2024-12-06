@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext,useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import CurrentList from "./Partials/CurrentList";
@@ -18,7 +18,6 @@ export default function MyBooks (){
         <div className="myBooks">
             <h2>My Books</h2>
             <h3>Lists</h3>
-
             <ul>
                 {lists.map((list) => {
                     return(
