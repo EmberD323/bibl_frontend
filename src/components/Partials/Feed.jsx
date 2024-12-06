@@ -8,13 +8,17 @@ export default function Feed() {
     lists.map((list) =>{
         list.books.map((book)=>allBooks.push(book))
     });
+    //order by date
+    console.log(allBooks)
+    const sortedBooks = allBooks.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
+    console.log(sortedBooks)
 
    //want book to include list info
     return (
        <div className="feed">
            <div className="title">My Feed</div>
            <ul>
-                {allBooks.map((book) => {
+                {sortedBooks.map((book) => {
                     return(
                         <li key={book.book.id} >
                             <div>You added {book.book.title} to {book.list.name} </div>

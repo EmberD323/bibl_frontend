@@ -16,3 +16,7 @@ body{
 .homepage>.content{
   display:flex;
 }
+.feed>ul{
+  display:flex;
+  flex-direction: column-reverse;
+}
