@@ -5,7 +5,7 @@ export default function Login (){
     const[username,setUsername] = useState("");
     const[password,setPassword] = useState("");
     const[formErrors,setFormErrors] = useState(null);
-    const [token,setToken,edit,setEdit] = useOutletContext();
+    const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
 
     function handleUsernameChange(e){
         setUsername(e.target.value)

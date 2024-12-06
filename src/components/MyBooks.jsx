@@ -27,7 +27,7 @@ export default function MyBooks (){
                     )
                 })}
             </ul>
-            <CurrentList selectedList={selectedList}/>
+            <CurrentList selectedList={selectedList} setSelectedList={setSelectedList}/>
             
         </div>
         

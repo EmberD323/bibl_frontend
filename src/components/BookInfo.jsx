@@ -1,9 +1,11 @@
 import { useOutletContext,useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import AddBook from "./Partials/AddBook";
 
 export default function BookInfo (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+    if(lists==undefined)return
+
     const{state} = useLocation();
     let book = state.book;
     if(!book.assignedAt){ //check if it is on a user list, if it is reassign book to get list data.
@@ -25,9 +27,9 @@ export default function BookInfo (){
                 <div className="title">{book.book.title}</div>
                 <div className="author">By {book.book.author_name}</div>
                 <div className="category">Category: {book.book.category}</div>
-                <div className="pageCount">Pages {book.book.pageCount}</div>
-                <div className="publishDate">By {book.book.publishDate}</div>
-                <div className="description">By {book.book.description}</div>
+                <div className="pageCount">Pages: {book.book.pageCount}</div>
+                <div className="publishDate">Published: {book.book.publishDate}</div>
+                <div className="description"> {book.book.description}</div>
             </div>
             <div className="userData">
                 <div>This book is on your {book.list.name} list</div>
@@ -41,16 +43,16 @@ export default function BookInfo (){
         <div className="bookInfo">
             <h2>Book Info</h2>
              <div className="bookData">
-                <img src={book.imageURL} alt="book_cover"/>
-                <div className="title">{book.title}</div>
-                <div className="author">By {book.author_name}</div>
-                <div className="category">Category: {book.category}</div>
-                <div className="pageCount">Pages {book.pageCount}</div>
-                <div className="publishDate">By {book.publishDate}</div>
-                <div className="description">By {book.description}</div>
+                <img src={book.volumeInfo.imageLinks.thumbnail} alt="book_cover"/>
+                <div className="title">{book.volumeInfo.title}</div>
+                <div className="author">By {book.volumeInfo.authors[0]}</div>
+                <div className="category">Category: {book.volumeInfo.categories[0]}</div>
+                <div className="pageCount">Pages {book.volumeInfo.pageCount}</div>
+                <div className="publishDate">Published:{book.volumeInfo.publishedDate}</div>
+                <div className="description">{book.volumeInfo.description}</div>
             </div>
             <div className="userData">
-
+                <AddBook book={book}/>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import { useOutletContext,useLocation } from "react-router-dom";
 import { useEffect, useState, } from "react";
-import Authors from "./Partials/Authors";
+import SearchBook from "./Partials/SearchBook";
 
 
 export default function SearchResult (){
@@ -17,7 +17,7 @@ export default function SearchResult (){
         }
     });
     function handleBookOpen(e){
-
+        navigate('../bookInfo',{state:{book}});
     }
  
     return (
@@ -28,10 +28,7 @@ export default function SearchResult (){
                 {filteredBooks.map((book) => {
                     return(
                         <li key={book.id} >
-                            {/* onClick={handleBookOpen} style={{cursor:"grab"}} */}
-                            <img src={book.volumeInfo.imageLinks.thumbnail} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>
-                            <div className="title" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.volumeInfo.title}</div>
-                            <Authors authors={book.volumeInfo.authors}/>
+                            <SearchBook book={book}/>
                         </li>
                     )
                 })}

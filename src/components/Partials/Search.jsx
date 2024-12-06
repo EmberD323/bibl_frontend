@@ -26,6 +26,7 @@ export default function Search() {
 
     async function handleBasicSearch(e){
         e.preventDefault();
+        console.log(query)
         const response = await fetch("https://www.googleapis.com/books/v1/volumes?q="+query+"&maxResults=40",{
             method: "GET",
         })

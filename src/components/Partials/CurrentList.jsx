@@ -5,7 +5,7 @@ import Book from "./Book";
 
 
 
-export default function CurrentList ({selectedList}){
+export default function CurrentList ({selectedList,setSelectedList}){
         // const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
 
     if(selectedList == null) return;
@@ -23,11 +23,10 @@ export default function CurrentList ({selectedList}){
             <h2>Current List</h2>
             <ul>
                 {selectedList.books.map((book) => {
-                    console.log(book)
                     return(
                         <li key={book.book.id} >
                             
-                            <Book book={book}/>
+                            <Book book={book} selectedList={selectedList} setSelectedList={setSelectedList}/>
                             
                         </li>
                     )

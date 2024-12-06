@@ -1,34 +1,50 @@
-const example1 = {id:3,title:"The Wedding People",author_name:"Alison Espach",imageURL:"https://books.google.com/books/content?id=2ZHXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"Fiction", description:"A NEW YORK TIMES BESTSELLER A Today Show #ReadwithJenna Book Club Pick A propulsive and uncommonly wise novel about one unexpected wedding guest and the surprising people who help her start anew. It’s a beautiful day in Newport, Rhode Island, when Phoebe Stone arrives at the grand Cornwall Inn wearing a green dress and gold heels, not a bag in sight, alone. She's immediately mistaken by everyone in the lobby for one of the wedding people, but she’s actually the only guest at the Cornwall who isn’t here for the big event. Phoebe is here because she’s dreamed of coming for years—she hoped to shuck oysters and take sunset sails with her husband, only now she’s here without him, at rock bottom, and determined to have one last decadent splurge on herself. Meanwhile, the bride has accounted for every detail and every possible disaster the weekend might yield except for, well, Phoebe and Phoebe's plan—which makes it that much more surprising when the two women can’t stop confiding in each other. In turns absurdly funny and devastatingly tender, Alison Espach’s The Wedding People is ultimately an incredibly nuanced and resonant look at the winding paths we can take to places we never imagined—and the chance encounters it sometimes takes to reroute us.",
-    pageCount:333,publishDate:"2024-07-30"
+
+async function fetchSuggestion(){
+    let queries = ["The%20Wedding%20People%20Alison%20Espach","The%20Women%20Kristin%20Hannah","Somewhere%20Beyond%20the%20Sea%20TJ%20Klune",
+        "The%20Ministry%20of%20Time%20Kaliane%20Bradley","The%20Anxious%20Generation%20Jonathan%20Haidt",
+        "The%20Third%20Gilmore%20Girl%20Kelly%20Bishop","The%20Bookshop%20Evan%20Friss","You%20Like%20It%20Darker%20Stephen King"
+    ]
+
+    const response1 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[0]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion1 = (await response1.json()).items[0]
+
+    const response2 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[1]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion2 = (await response2.json()).items[0]
+
+    const response3 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[2]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion3 = (await response3.json()).items[0]
+
+    const response4 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[3]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion4 = (await response4.json()).items[0]
+
+    const response5 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[4]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion5 = (await response5.json()).items[0]
+
+    const response6 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[5]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion6 = (await response6.json()).items[0]
+
+    const response7 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[6]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion7 = (await response7.json()).items[0]
+
+    const response8 = await fetch("https://www.googleapis.com/books/v1/volumes?q="+queries[7]+"&maxResults=1",{
+    method: "GET",
+    })
+    let suggestion8 = (await response8.json()).items[0]
+    return[suggestion1,suggestion2,suggestion3,suggestion4,suggestion5,suggestion6,suggestion7,suggestion8]
 }
-const example2 = {id:4,title:"The Women",author_name:"Kristin Hannah",imageURL:"http://books.google.com/books/content?id=0Ua4EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"Fiction", description:"A #1 bestseller on The New York Times, USA Today, Washington Post, and Los Angeles Times! From the celebrated author of The Nightingale and The Four Winds comes Kristin Hannah's The Women—at once an intimate portrait of coming of age in a dangerous time and an epic tale of a nation divided. Women can be heroes. When twenty-year-old nursing student Frances “Frankie” McGrath hears these words, it is a revelation. Raised in the sun-drenched, idyllic world of Southern California and sheltered by her conservative parents, she has always prided herself on doing the right thing. But in 1965, the world is changing, and she suddenly dares to imagine a different future for herself. When her brother ships out to serve in Vietnam, she joins the Army Nurse Corps and follows his path. As green and inexperienced as the men sent to Vietnam to fight, Frankie is over-whelmed by the chaos and destruction of war. Each day is a gamble of life and death, hope and betrayal; friendships run deep and can be shattered in an instant. In war, she meets—and becomes one of—the lucky, the brave, the broken, and the lost. But war is just the beginning for Frankie and her veteran friends. The real battle lies in coming home to a changed and divided America, to angry protesters, and to a country that wants to forget Vietnam. The Women is the story of one woman gone to war, but it shines a light on all women who put themselves in harm’s way and whose sacrifice and commitment to their country has too often been forgotten. A novel about deep friendships and bold patriotism, The Women is a richly drawn story with a memorable heroine whose idealism and courage under fire will come to define an era.",
-    pageCount:409,publishDate:"2024-02-06"
-}
-const example3 = {id:5,title:"Somewhere Beyond the Sea",author_name:"TJ Klune",imageURL:"http://books.google.com/books/content?id=QV7aEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"Fiction", description:"Somewhere Beyond the Sea is the hugely-anticipated sequel to TJ Klune's The House in the Cerulean Sea, one of the best-loved and best-selling fantasy novels of the past decade. A magical house. A secret past. A summons that could change everything. Arthur Parnassus lives a good life built on the ashes of a bad one. He’s the headmaster of a strange orphanage on a distant and peculiar island, and he hopes to soon be the adoptive father to the six dangerous and magical children who live there. Arthur works hard and loves with his whole heart so none of the children ever feel the neglect and pain that he once felt as an orphan on that very same island so long ago. He is not alone: joining him is the love of his life, Linus Baker, a former caseworker in the Department In Charge of Magical Youth. And there's the island's sprite, Zoe Chapelwhite, and her girlfriend, Mayor Helen Webb. Together, they will do anything to protect the children. But when Arthur is summoned to make a public statement about his dark past, he finds himself at the helm of a fight for the future that his family, and all magical people, deserve. And when a new magical child hopes to join them on their island home—one who finds power in calling himself monster, a name that Arthur worked so hard to protect his children from—Arthur knows they’re at a breaking point: their family will either grow stronger than ever or fall apart. Welcome back to Marsyas Island. This is Arthur’s story. Somewhere Beyond the Sea is a story of resistance, lovingly told, about the daunting experience of fighting for the life you want to live and doing the work to keep it. At the Publisher's request, this title is being sold without Digital Rights Management Software (DRM) applied.",
-    pageCount:358,publishDate:"2024-09-10"
-}
-const example4 = {id:6,title:"The Ministry of Time",author_name:"Kaliane Bradley",imageURL:"http://books.google.com/books/content?id=x8f0EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"Fiction", description:"An ingeniously imagined, hilarious romp through time, space, and the human heart... The Ministry of Time asks: What does it mean to defy history, when history is living in your house?",
-    pageCount:352,publishDate:"2024-05-07"
-}
-const example5 = {id:7,title:"The Anxious Generation",author_name:"Jonathan Haidt",imageURL:"http://books.google.com/books/content?id=I03HEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"Psychology", description:"THE INSTANT #1 NEW YORK TIMES BESTSELLER From New York Times bestselling coauthor of The Coddling of the American Mind, an essential investigation into the collapse of youth mental health—and a plan for a healthier, freer childhood. “Erudite, engaging, combative, crusading.” —New York Times Book Review “Words that chill the parental heart… thanks to Mr. Haidt, we can glimpse the true horror of what happened not only in the U.S. but also elsewhere in the English-speaking world… lucid, memorable… galvanizing.” —Wall Street Journal [An] important new book...The shift in kids’ energy and attention from the physical world to the virtual one, Haidt shows, has been catastrophic, especially for girls. —Michelle Goldberg, The New York Times After more than a decade of stability or improvement, the mental health of adolescents plunged in the early 2010s. Rates of depression, anxiety, self-harm, and suicide rose sharply, more than doubling on many measures. Why? In The Anxious Generation, social psychologist Jonathan Haidt lays out the facts about the epidemic of teen mental illness that hit many countries at the same time. He then investigates the nature of childhood, including why children need play and independent exploration to mature into competent, thriving adults. Haidt shows how the “play-based childhood” began to decline in the 1980s, and how it was finally wiped out by the arrival of the “phone-based childhood” in the early 2010s. He presents more than a dozen mechanisms by which this “great rewiring of childhood” has interfered with children’s social and neurological development, covering everything from sleep deprivation to attention fragmentation, addiction, loneliness, social contagion, social comparison, and perfectionism. He explains why social media damages girls more than boys and why boys have been withdrawing from the real world into the virtual world, with disastrous consequences for themselves, their families, and their societies. Most important, Haidt issues a clear call to action. He diagnoses the “collective action problems” that trap us, and then proposes four simple rules that might set us free. He describes steps that parents, teachers, schools, tech companies, and governments can take to end the epidemic of mental illness and restore a more humane childhood. Haidt has spent his career speaking truth backed by data in the most difficult landscapes—communities polarized by politics and religion, campuses battling culture wars, and now the public health emergency faced by Gen Z. We cannot afford to ignore his findings about protecting our children—and ourselves—from the psychological damage of a phone-based life.",
-    pageCount:401,publishDate:"2024-03-26"
-}
-const example6 = {id:8,title:"The Third Gilmore Girl",author_name:"Kelly Bishop",imageURL:"http://books.google.com/books/content?id=JNfyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"Biography & Autobiography", description:"INSTANT NEW YORK TIMES BESTSELLER “Come for the Gilmore Girls anecdotes, stay for the revealing truths about what it takes to build a lifelong career in and out of Hollywood” (The A.V. Club) in this candid and captivating memoir from award-winning and beloved actress Kelly Bishop, spanning her six decades in show business from A Chorus Line, Dirty Dancing, Gilmore Girls, and much more. Kelly Bishop’s long, storied career has been defined by landmark achievements, from winning a Tony Award for her turn in the original Broadway cast of A Chorus Line to her memorable performance as Jennifer Grey’s mother in Dirty Dancing. But it is probably her iconic role as matriarch Emily in the modern classic Gilmore Girls that cemented her legacy. Now, Bishop reflects on her remarkable life and looks towards the future with The Third Gilmore Girl. She shares some of her greatest stories and the life lessons she’s learned on her journey. From her early transition from dance to drama, to marrying young to a compulsive gambler, to the losses and achievements she experienced—among them marching for women’s rights and losing her second husband to cancer—Bishop offers a rich, genuine celebration of her life. Full of witty insights and featuring a special collection of personal and professional photographs, The Third Gilmore Girl is a warm, unapologetic, and spirited memoir from a woman who has left indelible impressions on her audiences for decades and has no plans on slowing down.",
-    pageCount:256,publishDate:"2024-09-17"
-}
-const example7 = {id:9,title:"The Bookshop",author_name:"Evan Friss",imageURL:"http://books.google.com/books/content?id=N5ThEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"History", description:"AN INSTANT NEW YORK TIMES BESTSELLER A spirited defense of this important, odd and odds-defying American retail category. —The New York Times It is a delight to wander through the bookstores of American history in this warm, generous book. —Emma Straub, New York Times bestselling author and owner of Books Are Magic An affectionate and engaging history of the American bookstore and its central place in American cultural life, from department stores to indies, from highbrow dealers trading in first editions to sidewalk vendors, and from chains to special-interest community destinations Bookstores have always been unlike any other kind of store, shaping readers and writers, and influencing our tastes, thoughts, and politics. They nurture local communities while creating new ones of their own. Bookshops are powerful spaces, but they are also endangered ones. In The Bookshop, we see the stakes: what has been, and what might be lost. Evan Friss’s history of the bookshop draws on oral histories, archival collections, municipal records, diaries, letters, and interviews with leading booksellers to offer a fascinating look at this institution beloved by so many. The story begins with Benjamin Franklin’s first bookstore in Philadelphia and takes us to a range of booksellers including the Strand, Chicago’s Marshall Field & Company, the Gotham Book Mart, specialty stores like Oscar Wilde and Drum and Spear, sidewalk sellers of used books, Barnes & Noble, Amazon Books, and Parnassus. The Bookshop is also a history of the leading figures in American bookselling, often impassioned eccentrics, and a history of how books have been marketed and sold over the course of more than two centuries—including, for example, a 3,000-pound elephant who signed books at Marshall Field’s in 1944. The Bookshop is a love letter to bookstores, a charming chronicle for anyone who cherishes these sanctuaries of literature, and essential reading to understand how these vital institutions have shaped American life—and why we still need them.",
-    pageCount:417,publishDate:"2024-08-06"
-}
-const example8 = {id:10,title:"You Like It Darker",author_name:"Stephen King",imageURL:"http://books.google.com/books/content?id=L5YJEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    category:"Fiction", description:"A collection of short stories.",
-    pageCount:512,publishDate:"2024-05-21"
-}
-const suggestionArray = [example1,example2,example3,example4,example5,example6,example7,example8]
-export default suggestionArray
+
+export default fetchSuggestion
