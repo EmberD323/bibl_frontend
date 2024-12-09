@@ -9,7 +9,6 @@ export default function BookInfo (){
 
     const{state} = useLocation();
     let selectedBook = state.book
-    console.log(selectedBook)
     if(!selectedBook.assignedAt){ //check if it is on a user list, if it is reassign book to get list data.
         lists.map((list) => {
             if(list.books.length == 0)return;
@@ -66,7 +65,6 @@ export default function BookInfo (){
             setEdit(!edit);
         }
     }
-    console.log(selectedBook)
 
     if(selectedBook.assignedAt) return (//if book is on a list
         <div className="bookInfo">

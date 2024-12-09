@@ -3,6 +3,7 @@ import { useEffect, useState,useRef } from "react";
 export default function Rate ({book}){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const [ratingClicked,setRatingClicked] = useState(undefined)
+    console.log(book)
     useEffect(()=>{
         if(book.book.ratings[0] != undefined){
             setRatingClicked(book.book.ratings[0].rating)
@@ -30,6 +31,7 @@ export default function Rate ({book}){
         }
         else{
             setEdit(!edit);
+            console.log("edited!")
         }
     }
     if(ratingClicked == undefined){

@@ -24,7 +24,10 @@ const App = () => {
       .then((json)=>{
         setLists(json)
       })
-      .catch((error)=>setError(error))
+      .catch((error)=>{
+        console.log(error)
+        setError(error)
+  })
       .finally(setLoading(false));
 },[edit])
 
