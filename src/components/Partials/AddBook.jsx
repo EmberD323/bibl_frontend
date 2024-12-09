@@ -1,5 +1,4 @@
 import { useNavigate,useOutletContext } from "react-router-dom";
-import Authors from "./Authors";
 import { useState } from "react";
 
 export default function AddBook({book,}) {
@@ -11,7 +10,6 @@ export default function AddBook({book,}) {
     async function handleBookAdd(e){
         e.preventDefault()
         let response;
-        console.log(book)
         if(book.volumeInfo){ //if its a new book
             let bookInfo=[book.volumeInfo.title,book.volumeInfo.authors[0],book.volumeInfo.imageLinks.thumbnail,
             book.volumeInfo.categories[0],book.volumeInfo.description,book.volumeInfo.pageCount,book.volumeInfo.publishedDate];

@@ -4,7 +4,6 @@ export default function CurrentlyReadingBook({book}) {
  
     const navigate = useNavigate()
     function handleBookOpen(e){
-        console.log(book)
         navigate('../bookInfo',{state:{book}});
 
     }

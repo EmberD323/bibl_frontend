@@ -26,13 +26,12 @@ export default function Search() {
 
     async function handleBasicSearch(e){
         e.preventDefault();
-        console.log(query)
         const response = await fetch("https://www.googleapis.com/books/v1/volumes?q="+query+"&maxResults=40",{
             method: "GET",
         })
         if(response.status != 200){//if theres errors
-            //const errors = await response.json();
-            console.log(response)
+            const errors = await response.json();
+            console.log(errors)
         }
         else{
             const thisSearchResult = await response.json()
@@ -60,8 +59,8 @@ export default function Search() {
             method: "GET",
         })
         if(response.status != 200){//if theres errors
-            //const errors = await response.json();
-            console.log(response)
+            const errors = await response.json();
+            console.log(errors)
         }
         else{
             const thisSearchResult = await response.json()
