@@ -1,4 +1,4 @@
-import { useOutletContext,useLocation } from "react-router-dom";
+import { useOutletContext,useLocation,useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddBook from "./Partials/AddBook";
 import Rate from "./Partials/Rate";
@@ -65,6 +65,23 @@ export default function BookInfo (){
             setEdit(!edit);
         }
     }
+    const navigate = useNavigate()
+
+    async function handleAuthorSearch(e){
+        let searchTerm="https://www.googleapis.com/books/v1/volumes?q=inauthor:"+selectedBook.book.author_name;
+        const response = await fetch(searchTerm,{
+            method: "GET",
+        })
+        if(response.status != 200){//if theres errors
+            const errors = await response.json();
+            console.log(errors)
+        }
+        else{
+            const thisSearchResult = await response.json()
+            navigate('../searchResult',{state:{thisSearchResult}});
+
+        }
+    }
 
     if(selectedBook.assignedAt) return (//if book is on a list
         <div className="bookInfo">
@@ -72,7 +89,7 @@ export default function BookInfo (){
              <div className="bookData">
                 <img src={selectedBook.book.imageURL} alt="book_cover"/>
                 <div className="title">{selectedBook.book.title}</div>
-                <div className="author">By {selectedBook.book.author_name}</div>
+                <div className="author" onClick={handleAuthorSearch} style={{cursor:"grab"}}>By {selectedBook.book.author_name}</div>
                 <div className="category">Category: {selectedBook.book.category}</div>
                 <div className="pageCount">Pages: {selectedBook.book.pageCount}</div>
                 <div className="publishDate">Published: {selectedBook.book.publishDate}</div>
@@ -94,7 +111,7 @@ export default function BookInfo (){
              <div className="bookData">
                 <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt="book_cover"/>
                 <div className="title">{selectedBook.volumeInfo.title}</div>
-                <div className="author">By {selectedBook.volumeInfo.authors[0]}</div>
+                <div className="author" onClick={handleAuthorSearch} style={{cursor:"grab"}}>By {selectedBook.volumeInfo.authors[0]}</div>
                 <div className="category">Category: {selectedBook.volumeInfo.categories[0]}</div>
                 <div className="pageCount">Pages {selectedBook.volumeInfo.pageCount}</div>
                 <div className="publishDate">Published:{selectedBook.volumeInfo.publishedDate}</div>
