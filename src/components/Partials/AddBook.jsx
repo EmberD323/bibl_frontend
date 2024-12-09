@@ -2,7 +2,7 @@ import { useNavigate,useOutletContext } from "react-router-dom";
 import Authors from "./Authors";
 import { useState } from "react";
 
-export default function AddBook({book,setSelectedBook}) {
+export default function AddBook({book,}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const [selectedList, setSelectedList] = useState("")
     const [hideAdded, setHideAdded] = useState(true)
@@ -49,11 +49,7 @@ export default function AddBook({book,setSelectedBook}) {
         else{
             setEdit(!edit);
             setHideAdded(!hideAdded)
-            console.log(setSelectedBook)
-            if(setSelectedBook){
-                console.log(lists)
-
-            }
+            
         }
         
 

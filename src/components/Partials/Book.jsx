@@ -9,6 +9,8 @@ export default function Book({book,selectedList,setSelectedList}) {
 
     const navigate = useNavigate()
     function handleBookOpen(e){
+        console.log(book)
+
         navigate('../bookInfo',{state:{book}});
 
     }
@@ -54,7 +56,6 @@ export default function Book({book,selectedList,setSelectedList}) {
             setEdit(!edit);
         }
     }
-    console.log(book)
     if(book.book.ratings[0] != undefined){
         return(
         <>

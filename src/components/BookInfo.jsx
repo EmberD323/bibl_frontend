@@ -4,15 +4,18 @@ import AddBook from "./Partials/AddBook";
 import Rate from "./Partials/Rate";
 export default function BookInfo (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+    
     if(lists==undefined)return
+
     const{state} = useLocation();
-    const [selectedBook,setSelectedBook] = useState(state.book)
+    let selectedBook = state.book
+    console.log(selectedBook)
     if(!selectedBook.assignedAt){ //check if it is on a user list, if it is reassign book to get list data.
         lists.map((list) => {
             if(list.books.length == 0)return;
             for(let i=0;i<list.books.length;i++){
                 if(list.books[i].book.author_name == selectedBook.volumeInfo.authors[0] && list.books[i].book.title == selectedBook.volumeInfo.title){
-                    setSelectedBook(list.books[i]);
+                    selectedBook = list.books[i];
                 }
             }
         });
@@ -63,7 +66,8 @@ export default function BookInfo (){
             setEdit(!edit);
         }
     }
-    
+    console.log(selectedBook)
+
     if(selectedBook.assignedAt) return (//if book is on a list
         <div className="bookInfo">
             <h2>Book Info</h2>
@@ -99,7 +103,7 @@ export default function BookInfo (){
                 <div className="description">{selectedBook.volumeInfo.description}</div>
             </div>
             <div className="userData">
-                <AddBook book={selectedBook} setSelectedBook={setSelectedBook}/>
+                <AddBook book={selectedBook}/>
             </div>
         </div>
     )

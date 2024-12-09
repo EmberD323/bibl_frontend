@@ -5,7 +5,9 @@ export default function FeedBook({book}) {
     const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
     const navigate = useNavigate()
     function handleBookOpen(e){
+        console.log(book)
         navigate('../bookInfo',{state:{book}});
+
 
     }
     return(

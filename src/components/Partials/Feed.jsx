@@ -17,7 +17,7 @@ export default function Feed() {
            <ul>
                 {sortedBooks.map((book) => {
                     return(
-                        <li key={book.book.id} >
+                        <li key={crypto.randomUUID()} >
                             <FeedBook book={book}/>
                         </li>
                     )
