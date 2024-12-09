@@ -12,7 +12,7 @@ export default function CurrentList ({selectedList,setSelectedList}){
     //if theres no books on the list
     if(selectedList.books == "") return(
         <div className="currentList">
-            <h2>Current List</h2>
+            <h2>{selectedList.name}</h2>
             <div>No books on the list yet, add some!</div>
         </div>
     );
@@ -20,7 +20,7 @@ export default function CurrentList ({selectedList,setSelectedList}){
     
     return (
         <div className="currentList">
-            <h2>Current List</h2>
+            <h2>{selectedList.name}</h2>
             <ul>
                 {selectedList.books.map((book) => {
                     return(

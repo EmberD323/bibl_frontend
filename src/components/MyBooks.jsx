@@ -5,8 +5,10 @@ import CurrentList from "./Partials/CurrentList";
 
 export default function MyBooks (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    const [selectedList,setSelectedList] = useState(null); 
+    const currentlyReading = (lists.filter((list) =>list.name == "Currently reading"))[0];
+    const [selectedList,setSelectedList] = useState(currentlyReading); 
     if(lists == null) return;
+
 
 
     function handleListOpen(e){
