@@ -13,7 +13,6 @@ export default function Feed() {
     const sortedBooks = allBooks.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
     console.log(sortedBooks)
 
-   //make books clickable
     return (
        <div className="feed">
            <div className="title">My Feed</div>

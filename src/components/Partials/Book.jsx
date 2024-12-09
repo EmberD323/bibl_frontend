@@ -32,6 +32,27 @@ export default function Book({book,selectedList,setSelectedList}) {
             setEdit(!edit);
         }
     }
+    async function handleRemoveFromAllLists() {
+        const response = await fetch(import.meta.env.VITE_BACKEND+"/lists/book/"+book.book.id, {
+            method: "DELETE",
+            mode:"cors",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": "Bearer " +token
+            },
+        }); 
+        if(response.status != 200){//if theres errors
+            const errors = await response.json();
+            console.log(errors)
+        }
+        else{
+            let newBookList = selectedList.books.filter((thisbook)=>thisbook.bookId != book.bookId)
+            let newSelectedList = selectedList;
+            newSelectedList.books = newBookList;
+            setSelectedList(newSelectedList)
+            setEdit(!edit);
+        }
+    }
     return(
         <>
         <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{ cursor: "grab" }}/>
@@ -39,6 +60,7 @@ export default function Book({book,selectedList,setSelectedList}) {
         <div className="author" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.author_name}</div>
         <div>{dayMonthYear}</div>
         <button onClick={handleRemoveFromList}>Remove from list</button>
+        <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
         <AddBook book={book}/>
         </>
     )
