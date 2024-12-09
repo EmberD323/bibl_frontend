@@ -5,7 +5,6 @@ import CurrentList from "./Partials/CurrentList";
 
 export default function MyBooks (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    console.log(lists)
     const [selectedList,setSelectedList] = useState(null); 
     if(lists == null) return;
 

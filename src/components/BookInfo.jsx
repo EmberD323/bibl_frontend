@@ -1,10 +1,9 @@
 import { useOutletContext,useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddBook from "./Partials/AddBook";
-
+import Rate from "./Partials/Rate";
 export default function BookInfo (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    
     if(lists==undefined)return
     const{state} = useLocation();
     const [selectedBook,setSelectedBook] = useState(state.book)
@@ -62,7 +61,6 @@ export default function BookInfo (){
         }
         else{
             setEdit(!edit);
-            console.log(selectedBook)
         }
     }
     
@@ -83,6 +81,7 @@ export default function BookInfo (){
                 <button onClick={handleRemoveFromList}>Remove from list</button>
                 <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
                 <AddBook book={selectedBook} />
+                <Rate book={selectedBook}/>
             </div>
         </div>
     )
