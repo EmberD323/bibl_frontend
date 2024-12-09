@@ -1,5 +1,6 @@
 import { useNavigate,useOutletContext } from "react-router-dom";
 import AddBook from "./AddBook";
+import Rate from "./Rate";
 export default function Book({book,selectedList,setSelectedList}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
 
@@ -53,12 +54,29 @@ export default function Book({book,selectedList,setSelectedList}) {
             setEdit(!edit);
         }
     }
+    console.log(book)
+    if(book.book.ratings[0] != undefined){
+        return(
+        <>
+        <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{ cursor: "grab" }}/>
+        <div className="title" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.title}</div>
+        <div className="author" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.author_name}</div>
+        <div>{dayMonthYear}</div>
+        <div className="rating">{book.book.ratings[0].rating} star rating</div>
+        <button onClick={handleRemoveFromList}>Remove from list</button>
+        <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
+        <AddBook book={book}/>
+        </>
+        )
+    }
     return(
         <>
         <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{ cursor: "grab" }}/>
         <div className="title" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.title}</div>
         <div className="author" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.author_name}</div>
         <div>{dayMonthYear}</div>
+        <div className="rating">Not yet rated</div>
+
         <button onClick={handleRemoveFromList}>Remove from list</button>
         <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
         <AddBook book={book}/>

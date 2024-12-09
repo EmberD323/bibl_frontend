@@ -2,8 +2,10 @@ import { useOutletContext,useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 export default function Rate ({book}){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    const [ratingClicked,setRatingClicked] = useState(book.book.ratings[0].rating)
-    console.log(book.book.ratings[0].rating)
+    const [ratingClicked,setRatingClicked] = useState(undefined)
+    if(book.book.ratings[0] != undefined){
+        setRatingClicked(book.book.ratings[0].rating)
+    }
     async function handleRating(e){
         console.log(e.target.id)
         setRatingClicked(e.target.id)
