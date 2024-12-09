@@ -9,9 +9,7 @@ export default function Feed() {
         list.books.map((book)=>allBooks.push(book))
     });
     //order by date
-    console.log(allBooks)
     const sortedBooks = allBooks.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
-    console.log(sortedBooks)
 
     return (
        <div className="feed">
