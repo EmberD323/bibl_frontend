@@ -72,7 +72,8 @@ export default function BookInfo (){
     const navigate = useNavigate()
 
     async function handleAuthorSearch(e){
-        let searchTerm="https://www.googleapis.com/books/v1/volumes?q=inauthor:"+selectedBook.book.author_name;
+        console.log(e.target.textContent)
+        let searchTerm="https://www.googleapis.com/books/v1/volumes?q=inauthor:"+e.target.textContent;
         const response = await fetch(searchTerm,{
             method: "GET",
         })
@@ -93,7 +94,7 @@ export default function BookInfo (){
              <div className="bookData">
                 <img src={selectedBook.book.imageURL} alt="book_cover"/>
                 <div className="title">{selectedBook.book.title}</div>
-                <div className="author" onClick={handleAuthorSearch} style={{cursor:"grab"}}>By {selectedBook.book.author_name}</div>
+                <div className="author"  style={{cursor:"grab"}}>By <span onClick={handleAuthorSearch}>{selectedBook.book.author_name}</span></div>
                 <div className="category">Category: {selectedBook.book.category}</div>
                 <div className="pageCount">Pages: {selectedBook.book.pageCount}</div>
                 <div className="publishDate">Published: {selectedBook.book.publishDate}</div>
@@ -114,7 +115,7 @@ export default function BookInfo (){
                  <div className="bookData">
                     <img src={selectedBook.imageURL} alt="book_cover"/>
                     <div className="title">{selectedBook.title}</div>
-                    <div className="author" onClick={handleAuthorSearch} style={{cursor:"grab"}}>By {selectedBook.author_name}</div>
+                    <div className="author"style={{cursor:"grab"}}>By <span onClick={handleAuthorSearch}>{selectedBook.author_name}</span></div>
                     <div className="category">Category: {selectedBook.category}</div>
                     <div className="pageCount">Pages: {selectedBook.pageCount}</div>
                     <div className="publishDate">Published: {selectedBook.publishDate}</div>
@@ -132,7 +133,7 @@ export default function BookInfo (){
              <div className="bookData">
                 <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt="book_cover"/>
                 <div className="title">{selectedBook.volumeInfo.title}</div>
-                <div className="author" onClick={handleAuthorSearch} style={{cursor:"grab"}}>By {selectedBook.volumeInfo.authors[0]}</div>
+                <div className="author"style={{cursor:"grab"}}>By <span onClick={handleAuthorSearch}>{selectedBook.volumeInfo.authors[0]}</span></div>
                 <div className="category">Category: {selectedBook.volumeInfo.categories[0]}</div>
                 <div className="pageCount">Pages {selectedBook.volumeInfo.pageCount}</div>
                 <div className="publishDate">Published:{selectedBook.volumeInfo.publishedDate}</div>
