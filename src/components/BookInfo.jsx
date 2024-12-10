@@ -1,7 +1,9 @@
 import { useOutletContext,useLocation,useNavigate } from "react-router-dom";
+
 import AddBook from "./Partials/AddBook";
 import Rate from "./Partials/Rate";
 import { BookOnLists } from "./Partials/BookOnLists";
+
 export default function BookInfo (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     
@@ -9,7 +11,7 @@ export default function BookInfo (){
     const{state} = useLocation();
     let selectedBook = state.book
 
-    //check if the boook is on the user lists and add list data
+    //check if the book is on the user lists and add save list data if it is
     if(!selectedBook.assignedAt){ 
         if(selectedBook.volumeInfo){
             lists.map((list) => {
@@ -23,8 +25,6 @@ export default function BookInfo (){
         }  
     }
 
-   
-    
     async function handleRemoveFromAllLists() {
         const response = await fetch(import.meta.env.VITE_BACKEND+"/lists/book/"+selectedBook.book.id, {
             method: "DELETE",
@@ -42,10 +42,10 @@ export default function BookInfo (){
             setEdit(!edit);
         }
     }
+    
+    //navigate to author search
     const navigate = useNavigate()
-
     async function handleAuthorSearch(e){
-        console.log(e.target.textContent)
         let searchTerm="https://www.googleapis.com/books/v1/volumes?q=inauthor:"+e.target.textContent;
         const response = await fetch(searchTerm,{
             method: "GET",
@@ -57,12 +57,13 @@ export default function BookInfo (){
         else{
             const thisSearchResult = await response.json()
             navigate('../searchResult',{state:{thisSearchResult}});
-
         }
     }
+    //make sure screen is scrolled top top on load
     window.scrollTo(0, 0);
 
-    if(selectedBook.assignedAt) return (//if book is on a list
+    //if book is on a user list
+    if(selectedBook.assignedAt) return (
         <div className="bookInfo">
             <h2>Book Info</h2>
              <div className="bookData">
@@ -82,7 +83,8 @@ export default function BookInfo (){
             </div>
         </div>
     )
-    if(selectedBook.author_name)return(//if suggested
+    //if user has navigated from a suggested book
+    if(selectedBook.author_name)return(
         <div className="bookInfo">
             <h2>Book Info</h2>
                  <div className="bookData">
@@ -99,8 +101,7 @@ export default function BookInfo (){
             </div>
         </div>
     )
-    return( //if not on list cjeck
-
+    return( //if user has navigated from a search result
         <div className="bookInfo">
             <h2>Book Info</h2>
              <div className="bookData">
@@ -117,10 +118,6 @@ export default function BookInfo (){
             </div>
         </div>
     )
-
-
-    
-
 }
 
 
