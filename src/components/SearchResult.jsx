@@ -1,25 +1,20 @@
-import { useOutletContext,useLocation } from "react-router-dom";
-import { useEffect, useState, } from "react";
+import { useLocation } from "react-router-dom";
 import SearchBook from "./Partials/SearchBook";
 
-
 export default function SearchResult (){
+    window.scrollTo(0, 0);
+
+    //get searchResult from navigation state
     const { state } = useLocation();
     const { thisSearchResult } = state;
-    //clean up - make sure they all have  images
+
+    //filter results to make sure they have authors and images
     let filteredBooks = [];
     thisSearchResult.items.map((book) =>{
         if(book.volumeInfo.imageLinks != undefined && book.volumeInfo.authors != undefined){
-            if(book.volumeInfo.authors.length>1){
-                
-            }
             filteredBooks.push(book)
         }
     });
-    function handleBookOpen(e){
-        navigate('../bookInfo',{state:{book}});
-    }
-    window.scrollTo(0, 0);
 
     return (
         <div className="searchResults">
@@ -34,11 +29,7 @@ export default function SearchResult (){
                     )
                 })}
             </ul>
-
-            
         </div>
-        
-
     )
 }
 
