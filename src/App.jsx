@@ -3,7 +3,6 @@ import "./styles/App.css"
 import { Outlet } from "react-router-dom";
 import NavBar from "./components/Partials/NavBar"
 
-
 const App = () => {
   const initalToken = localStorage.getItem("token");
   const [token,setToken] = useState(initalToken);
