@@ -2,6 +2,7 @@ import { useOutletContext,useLocation,useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddBook from "./Partials/AddBook";
 import Rate from "./Partials/Rate";
+import { BookOnLists } from "./Partials/BookOnLists";
 export default function BookInfo (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     
@@ -9,7 +10,6 @@ export default function BookInfo (){
 
     const{state} = useLocation();
     let selectedBook = state.book
-    console.log(selectedBook)
     if(!selectedBook.assignedAt){ //check if it is on a user list, if it is reassign book to get list data.
         if(selectedBook.volumeInfo){
             lists.map((list) => {
@@ -20,21 +20,10 @@ export default function BookInfo (){
                     }
                 }
             });
-        }
-        
+        }  
     }
 
-    let listNames = [];
-    if(selectedBook.assignedAt){
-        lists.map((list) => {
-            if(list.books.length==0)return;
-            for(let i=0;i<list.books.length;i++){
-                if(list.books[i].book.author_name == selectedBook.book.author_name && list.books[i].book.title == selectedBook.book.title){
-                    listNames.push(list.name);
-                }
-            }
-        });
-    }
+   
     async function handleRemoveFromList(){
         const response = await fetch(import.meta.env.VITE_BACKEND+"/lists/"+selectedBook.list.id+"/deleteBook/"+selectedBook.book.id, {
             method: "PUT",
@@ -101,7 +90,7 @@ export default function BookInfo (){
                 <div className="description"> {selectedBook.book.description}</div>
             </div>
             <div className="userData">
-                <div>This book is on your {listNames.length} of your lists</div>
+                <div>This book is on your lists: <BookOnLists book={selectedBook} /> </div>
                 <button onClick={handleRemoveFromList}>Remove from list</button>
                 <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
                 <AddBook book={selectedBook} />

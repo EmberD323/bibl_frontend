@@ -7,15 +7,21 @@ import { ListDeleteButton } from "./Partials/ListDeleteButton";
 
 export default function MyBooks (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    if(lists ==null) return
 
-    const currentlyReading = (lists.filter((list) =>list.name == "Currently reading"))[0];
-    const [selectedList,setSelectedList] = useState(currentlyReading); 
+    if(lists ==null) return
+    const { state } = useLocation();
+    let navigatedList = null;
+    if(state){
+        navigatedList = state.list
+    }
+    const [selectedList,setSelectedList] = useState(navigatedList); 
+
+    
     const [name,setName] = useState(""); 
     const [errors,setErrors] = useState(null)
 
 
-
+console.log(selectedList)
 
     function handleListOpen(e){
         const listID = e.target.parentNode.id;

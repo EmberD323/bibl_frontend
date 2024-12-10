@@ -10,6 +10,8 @@ export default function CurrentlyReading() {
     const navigate = useNavigate()
     function handleCurrentlyReadingOpen(e){
         navigate('../myBooks');
+        navigate('../myBooks',{state:{list:CurrentlyReadingList}});
+
     }
     return (
        <div className="currentlyReading">
