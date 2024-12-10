@@ -1,34 +1,31 @@
 import { useOutletContext,useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import CurrentList from "./Partials/CurrentList";
 import Errors from "./Partials/Errors";
-import { ListDeleteButton } from "./Partials/ListDeleteButton";
+import  ListDeleteButton  from "./Partials/ListDeleteButton";
 
 export default function MyBooks (){
-    const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+    const [token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions] = useOutletContext();
+    window.scrollTo(0, 0);
 
-    if(lists ==null) return
+    //if user navigated here through clicking a list name, open that list on load
     const { state } = useLocation();
     let navigatedList = null;
     if(state){
         navigatedList = state.list
     }
+    //state assignment
     const [selectedList,setSelectedList] = useState(navigatedList); 
-
-    
     const [name,setName] = useState(""); 
     const [errors,setErrors] = useState(null)
-
-
-console.log(selectedList)
 
     function handleListOpen(e){
         const listID = e.target.parentNode.id;
         let thisList = lists.filter((list) =>list.id == listID);
         setSelectedList(thisList[0])
     }
-    
+    //adding a list
     function handleNameChange(e){
         setName(e.target.value)
     }
@@ -54,12 +51,10 @@ console.log(selectedList)
         }
 
     }
-    window.scrollTo(0, 0);
     return (
         <div className="myBooks">
             <h2>My Books</h2>
-            <h3>Lists</h3>
-            <ul>
+            <ul className="listCards">
                 {lists.map((list) => {
                     return(
                         <li key={list.id} id ={list.id} >
@@ -79,7 +74,6 @@ console.log(selectedList)
             
         </div>
         
-
     )
 }
 

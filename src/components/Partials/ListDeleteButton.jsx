@@ -1,6 +1,6 @@
 import { useOutletContext,useLocation } from "react-router-dom";
 
-export function ListDeleteButton({list}){
+export default function ListDeleteButton({list}){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
 
     async function handleListDelete(e) {

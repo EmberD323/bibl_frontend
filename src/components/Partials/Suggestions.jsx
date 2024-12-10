@@ -1,9 +1,8 @@
 import { useOutletContext} from "react-router-dom";
 import SuggestionBook from "./SuggestionBook";
-//will come back to suggestions -on pause
 export default  function Suggestions() {
     const [token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions] = useOutletContext();
-    
+    if(suggestions == null) return
 
     
     return (

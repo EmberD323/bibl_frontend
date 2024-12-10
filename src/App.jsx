@@ -64,7 +64,6 @@ useEffect(()=>{
                     }
                 }
             })
-            console.log("hi")
             const first8Books = booksNotOnUsersLists.slice(-9,-1)
             setSuggestions(first8Books)
             //add first 8 to suggestions
