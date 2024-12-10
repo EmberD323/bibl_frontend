@@ -1,16 +1,16 @@
 import { useOutletContext,useLocation,useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import AddBook from "./Partials/AddBook";
 import Rate from "./Partials/Rate";
 import { BookOnLists } from "./Partials/BookOnLists";
 export default function BookInfo (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     
-    if(lists==undefined)return
-
+    //get book from navigated state
     const{state} = useLocation();
     let selectedBook = state.book
-    if(!selectedBook.assignedAt){ //check if it is on a user list, if it is reassign book to get list data.
+
+    //check if the boook is on the user lists and add list data
+    if(!selectedBook.assignedAt){ 
         if(selectedBook.volumeInfo){
             lists.map((list) => {
                 if(list.books.length == 0)return;
@@ -24,23 +24,7 @@ export default function BookInfo (){
     }
 
    
-    async function handleRemoveFromList(){
-        const response = await fetch(import.meta.env.VITE_BACKEND+"/lists/"+selectedBook.list.id+"/deleteBook/"+selectedBook.book.id, {
-            method: "PUT",
-            mode:"cors",
-            headers: {
-              "Content-Type": "application/json",
-              "authorization": "Bearer " +token
-            },
-        }); 
-        if(response.status != 200){//if theres errors
-            const errors = await response.json();
-            console.log(errors)
-        }
-        else{
-            setEdit(!edit);
-        }
-    }
+    
     async function handleRemoveFromAllLists() {
         const response = await fetch(import.meta.env.VITE_BACKEND+"/lists/book/"+selectedBook.book.id, {
             method: "DELETE",
@@ -92,7 +76,6 @@ export default function BookInfo (){
             </div>
             <div className="userData">
                 <div>This book is on your lists: <BookOnLists book={selectedBook} /> </div>
-                <button onClick={handleRemoveFromList}>Remove from list</button>
                 <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
                 <AddBook book={selectedBook} />
                 <Rate book={selectedBook}/>

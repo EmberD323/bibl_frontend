@@ -19,14 +19,18 @@ export function BookOnLists({book}){
         navigate('../myBooks',{state:{list}});
 
     }
-    if(listsFound.length == 1){
-        return <span  id={listsFound[0].id} style={{cursor:"grab"}} onClick={handleListNavigation}>{listsFound[0].name}</span>
-        
-    }
-    // return(
-        
-        
-    // )
+
+    return(
+        <ul>
+            {listsFound.map((list)=>{
+                return(
+                    <li  key ={list.id} id={list.id} style={{cursor:"grab"}} onClick={handleListNavigation}>{list.name} </li>
+                )
+            })}
+        </ul>
+
+    )
+    
 }
 {/* <ul>
                 {lists.map((list) => {
