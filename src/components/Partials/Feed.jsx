@@ -4,18 +4,27 @@ export default function Feed() {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     if(lists == null){return}
 
-    const allBooks=[];
+    const allEvents=[];
+    const allRatings=[];
+
     lists.map((list) =>{
-        list.books.map((book)=>allBooks.push(book))
+        list.books.map((book)=>{
+            allEvents.push(book);
+            if(book.book.ratings[0] != undefined){
+                allEvents.push({rated:book.book})
+            }
+        });
+
     });
     //order by date
-    const sortedBooks = allBooks.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
+    const sortedEvents = allEvents.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
+    console.log(sortedEvents)
 
     return (
        <div className="feed">
            <div className="title">My Feed</div>
            <ul>
-                {sortedBooks.map((book) => {
+                {sortedEvents.map((book) => {
                     return(
                         <li key={crypto.randomUUID()} >
                             <FeedBook book={book}/>

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function SuggestionBook({book}) {
     
-    console.log(book)
     const navigate = useNavigate()
     function handleBookOpen(e){
         navigate('../bookInfo',{state:{book}});
