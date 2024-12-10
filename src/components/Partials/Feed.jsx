@@ -18,7 +18,6 @@ export default function Feed() {
     });
     //order by date
     const sortedEvents = allEvents.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
-    console.log(sortedEvents)
 
     return (
        <div className="feed">

@@ -122,7 +122,7 @@ export default function BookInfo (){
                     <div className="description"> {selectedBook.description}</div>
                 </div>
             <div className="userData">
-                    <AddBook book={selectedBook}/>
+                    <AddBook book={{book:selectedBook}}/>
             </div>
         </div>
     )
