@@ -13,6 +13,7 @@ const App = () => {
   const [loading,setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState(null)
 
+  //fetch lists
   useEffect(()=>{
     fetch(import.meta.env.VITE_BACKEND +"/lists",{
         method: "GET",
@@ -30,60 +31,54 @@ const App = () => {
         console.log(error)
         setError(error)
       })
-},[edit])
-useEffect(()=>{
-  // get 10 books from db that are not on users lists
-  if(lists!=null){
-    fetch(import.meta.env.VITE_BACKEND +"/lists/books",{
-            method: "GET",
-            mode:"cors",
-            headers: {
-            "Content-Type": "application/json",
-            "authorization": "Bearer " +token
-            }
-        })
-        .then((response)=>response.json())
-        .then((json)=>{
-            let allBooks = json;
-            let booksNotOnUsersLists =[];
-            const test = allBooks.map((book)=>{//find all books not on users lists
-                if(book.lists[0]==undefined){
-                    booksNotOnUsersLists.push(book);
-                }
-                else{
-                    const allUserBooks=[];
-                    lists.map((list) =>{
-                        list.books.map((book)=>allUserBooks.push(book))
-                    });
-                    //if none of user lists are in list
-                    let found = allUserBooks.find((findbook)=>findbook.bookId == book.id);
-                    // //create a list for another user and add a book that i dont have on a list there
-                    if(found == undefined ){
-                        found = true;
-                        booksNotOnUsersLists.push(book);
-                    }
-                }
+  },[edit])
+  //fetch suggestions
+  useEffect(()=>{
+    if(lists!=null){
+      fetch(import.meta.env.VITE_BACKEND +"/lists/books",{
+              method: "GET",
+              mode:"cors",
+              headers: {
+              "Content-Type": "application/json",
+              "authorization": "Bearer " +token
+              }
+          })
+          .then((response)=>response.json())
+          .then((json)=>{
+              let allBooks = json;
+              let booksNotOnUsersLists =[];
+              allBooks.map((book)=>{//find all books not on users lists
+                  if(book.lists[0]==undefined){
+                      booksNotOnUsersLists.push(book);
+                  }
+                  else{
+                      const allUserBooks=[];
+                      lists.map((list) =>{
+                          list.books.map((book)=>allUserBooks.push(book))
+                      });
+                      let found = allUserBooks.find((findbook)=>findbook.bookId == book.id);
+                      if(found == undefined ){
+                          found = true;
+                          booksNotOnUsersLists.push(book);
+                      }
+                  }
+              })
+              const eightBooks = booksNotOnUsersLists.slice(-9,-1)
+              //add 8 to suggestions
+              setSuggestions(eightBooks)
             })
-            const first8Books = booksNotOnUsersLists.slice(-9,-1)
-            setSuggestions(first8Books)
-            //add first 8 to suggestions
-            
-        })
-        .catch((error)=>{
-            console.log(error)
-            setError(error)
+          .catch((error)=>{
+              console.log(error)
+              setError(error)
             })
-        .finally(setLoading(false));
-  }
-},[lists])
+          .finally(setLoading(false));
+    }
+  },[lists])
 
 
-if(error) return <p>Error</p>
-if(loading) return <p>Loading</p>
-  
-
-
-  else return (
+  if(error) return <p>Error</p>
+  if(loading) return <p>Loading</p>
+  return (
     <>
       <NavBar token={token} setToken={setToken}/>
       <Outlet context={[token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions]}/>
