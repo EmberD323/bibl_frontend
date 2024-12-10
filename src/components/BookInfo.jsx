@@ -9,15 +9,19 @@ export default function BookInfo (){
 
     const{state} = useLocation();
     let selectedBook = state.book
+    console.log(selectedBook)
     if(!selectedBook.assignedAt){ //check if it is on a user list, if it is reassign book to get list data.
-        lists.map((list) => {
-            if(list.books.length == 0)return;
-            for(let i=0;i<list.books.length;i++){
-                if(list.books[i].book.author_name == selectedBook.volumeInfo.authors[0] && list.books[i].book.title == selectedBook.volumeInfo.title){
-                    selectedBook = list.books[i];
+        if(selectedBook.volumeInfo){
+            lists.map((list) => {
+                if(list.books.length == 0)return;
+                for(let i=0;i<list.books.length;i++){
+                    if(list.books[i].book.author_name == selectedBook.volumeInfo.authors[0] && list.books[i].book.title == selectedBook.volumeInfo.title){
+                        selectedBook = list.books[i];
+                    }
                 }
-            }
-        });
+            });
+        }
+        
     }
 
     let listNames = [];
@@ -101,6 +105,23 @@ export default function BookInfo (){
                 <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
                 <AddBook book={selectedBook} />
                 <Rate book={selectedBook}/>
+            </div>
+        </div>
+    )
+    if(selectedBook.author_name)return(//if suggested
+        <div className="bookInfo">
+            <h2>Book Info</h2>
+                 <div className="bookData">
+                    <img src={selectedBook.imageURL} alt="book_cover"/>
+                    <div className="title">{selectedBook.title}</div>
+                    <div className="author" onClick={handleAuthorSearch} style={{cursor:"grab"}}>By {selectedBook.author_name}</div>
+                    <div className="category">Category: {selectedBook.category}</div>
+                    <div className="pageCount">Pages: {selectedBook.pageCount}</div>
+                    <div className="publishDate">Published: {selectedBook.publishDate}</div>
+                    <div className="description"> {selectedBook.description}</div>
+                </div>
+            <div className="userData">
+                    <AddBook book={selectedBook}/>
             </div>
         </div>
     )

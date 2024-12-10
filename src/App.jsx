@@ -27,7 +27,7 @@ const App = () => {
       .catch((error)=>{
         console.log(error)
         setError(error)
-  })
+      })
       .finally(setLoading(false));
 },[edit])
 
@@ -37,7 +37,7 @@ if(loading) return <p>Loading</p>
   
 
 
-  return (
+  else return (
     <>
       <NavBar token={token} setToken={setToken}/>
       <Outlet context={[token,setToken,edit,setEdit,lists,setLists]}/>
