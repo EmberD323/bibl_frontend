@@ -57,6 +57,8 @@ export default function HomePage (){
                 })
             .finally(setLoading(false));
     },[edit])
+    window.scrollTo(0, 0);
+
     if(error) return <p>Error</p>
     if(loading) return <p>Loading</p>
 

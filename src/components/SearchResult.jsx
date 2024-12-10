@@ -19,7 +19,8 @@ export default function SearchResult (){
     function handleBookOpen(e){
         navigate('../bookInfo',{state:{book}});
     }
- 
+    window.scrollTo(0, 0);
+
     return (
         <div className="searchResults">
             <h2>Search Results</h2>

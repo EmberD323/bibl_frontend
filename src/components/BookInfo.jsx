@@ -76,6 +76,7 @@ export default function BookInfo (){
 
         }
     }
+    window.scrollTo(0, 0);
 
     if(selectedBook.assignedAt) return (//if book is on a list
         <div className="bookInfo">

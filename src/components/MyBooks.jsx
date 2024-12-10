@@ -54,7 +54,7 @@ console.log(selectedList)
         }
 
     }
-    
+    window.scrollTo(0, 0);
     return (
         <div className="myBooks">
             <h2>My Books</h2>

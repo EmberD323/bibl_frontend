@@ -15,15 +15,10 @@ export function BookOnLists({book}){
 
     function handleListNavigation(e){
         let listID = e.target.id;
-        console.log(listID)
-        console.log(lists)
         let list = (lists.filter((listSearch)=>listSearch.id == listID))[0]
-        console.log(list)
         navigate('../myBooks',{state:{list}});
 
     }
-    console.log(book)
-    console.log(listsFound)
     if(listsFound.length == 1){
         return <span  id={listsFound[0].id} style={{cursor:"grab"}} onClick={handleListNavigation}>{listsFound[0].name}</span>
         
