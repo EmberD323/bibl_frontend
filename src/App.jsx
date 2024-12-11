@@ -5,6 +5,7 @@ import NavBar from "./components/Partials/NavBar"
 
 const App = () => {
   const initalToken = localStorage.getItem("token");
+  console.log(initalToken)
   const [token,setToken] = useState(initalToken);
   const [edit,setEdit] = useState(true); 
   const [lists,setLists]=useState(null);
@@ -14,7 +15,8 @@ const App = () => {
 
   //fetch lists
   useEffect(()=>{
-    fetch(import.meta.env.VITE_BACKEND +"/lists",{
+    if(token != null){
+      fetch(import.meta.env.VITE_BACKEND +"/lists",{
         method: "GET",
         mode:"cors",
         headers: {
@@ -30,10 +32,11 @@ const App = () => {
         console.log(error)
         setError(error)
       })
-  },[edit])
+    }
+  },[edit,token])
   //fetch suggestions
   useEffect(()=>{
-    if(lists!=null){
+    if(lists!=null && token!=null){
       fetch(import.meta.env.VITE_BACKEND +"/lists/books",{
               method: "GET",
               mode:"cors",
@@ -76,7 +79,7 @@ const App = () => {
 
 
   if(error) return <p>Error</p>
-  if(loading) return <p>Loading</p>
+  if(token !=null && loading) return <p>Loading</p>
   return (
     <>
       <NavBar token={token} setToken={setToken}/>
