@@ -58,16 +58,22 @@ export default function AddBook({book}) {
         setSelectedList(thisList)
         if(hideAdded == false){
             setHideAdded(!hideAdded)
-
         }
     }
-    
+    //for each list, if book is already on the list dont display on options
+    let listsToAdd =[];
+    lists.map((list)=>{
+        const found = list.books.find((findBook) => book.bookId == findBook.bookId );
+        if(found == undefined){
+            listsToAdd.push(list);
+        }
+    })
     return(
         <form onSubmit={handleBookAdd}>
             <label htmlFor="list-select">Add to a list:</label>
             <select name="list" id="list-select" onChange={handleListChange}>
             <option value="">--Please choose an option--</option>
-            {lists.map((list) => {
+            {listsToAdd.map((list) => {
                 return(
                     <option key={list.id} value={list.name} id={list.id}>{list.name}</option>
                 )
