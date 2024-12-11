@@ -9,7 +9,6 @@ export default function MyBooks (){
     const [token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions] = useOutletContext();
     const navigate = useNavigate()
 
-    window.scrollTo(0, 0);
 
     //if user navigated here through clicking a list name, open that list on load
     const { state } = useLocation();

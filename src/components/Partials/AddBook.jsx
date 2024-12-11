@@ -56,6 +56,10 @@ export default function AddBook({book}) {
         let listName = e.target.value;
         let thisList = (lists.filter((list) =>list.name == listName))[0];
         setSelectedList(thisList)
+        if(hideAdded == false){
+            setHideAdded(!hideAdded)
+
+        }
     }
     
     return(

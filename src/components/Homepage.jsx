@@ -1,12 +1,12 @@
 import { useOutletContext,Link } from "react-router-dom";
-
+import { useEffect } from "react";
 import Suggestions from "./Partials/Suggestions/Suggestions"
 import CurrentlyReading from "./Partials/CurrentlyReading/CurrentlyReading"
 import Feed from "./Partials/Feed/Feed"
 
 export default function HomePage (){
     const [token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions] = useOutletContext();
-
+   
     //if not logged in
     if(typeof token == "object"){
         return (
