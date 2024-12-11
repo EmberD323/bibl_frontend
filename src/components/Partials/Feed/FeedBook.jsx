@@ -4,10 +4,11 @@ export default function FeedBook({book}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
 
     const navigate = useNavigate()
-    function handleBookOpen(e){
-        console.log(book)
-        console.log(book.rated)
+    function handleBookOpenRated(e){
         navigate('../bookInfo',{state:{book:book.rated}});
+    }
+    function handleBookOpen(e){
+        navigate('../bookInfo',{state:{book}});
     }
     function handleListNavigation(e){
         let listID = e.target.id;
@@ -20,9 +21,9 @@ export default function FeedBook({book}) {
         const dayMonthYear = dateTime.getDate()+"/"+(dateTime.getUTCMonth()+1)+"/"+dateTime.getFullYear();
         return(
         <>
-        <div>You rated <span onClick={handleBookOpen} style={{cursor:"grab"}}>{book.rated.title}</span> {book.rated.ratings[0].rating} Stars </div>
+        <div>You rated <span onClick={handleBookOpenRated} style={{cursor:"grab"}}>{book.rated.title}</span> {book.rated.ratings[0].rating} Stars </div>
         <div>Date: {dayMonthYear}</div>
-        <img src={book.rated.imageURL}onClick={handleBookOpen} style={{cursor:"grab"}} alt="book_cover" />
+        <img src={book.rated.imageURL}onClick={handleBookOpenRated} style={{cursor:"grab"}} alt="book_cover" />
         </>
     )}
     const dateTime = new Date((Date.parse(book.assignedAt)))

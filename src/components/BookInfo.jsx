@@ -10,10 +10,8 @@ export default function BookInfo (){
     //get book from navigated state
     const{state} = useLocation();
     let selectedBook = state.book
-    console.log(selectedBook)
 
     //check if the book is on the user lists and add save list data if it is
-    console.log(lists)
     if(!selectedBook.assignedAt){ 
         if(selectedBook.volumeInfo){
             lists.map((list) => {

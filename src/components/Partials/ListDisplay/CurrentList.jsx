@@ -8,7 +8,11 @@ export default function CurrentList ({selectedList,setSelectedList}){
             <h2>{selectedList.name}</h2>
             <div>No books on the list yet, add some!</div>
         </div>
-    )   
+    ) 
+    //sort list by date
+    const sortedBooks = selectedList.books.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
+    selectedList.books = sortedBooks;
+
     return (
         <div className="currentList">
             <h2>{selectedList.name}</h2>

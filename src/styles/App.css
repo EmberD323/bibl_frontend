@@ -16,7 +16,7 @@ body{
 .homepage>.content{
   display:flex;
 }
-.feed>ul{
+.feed>ul,.currentList>ul{
   display:flex;
   flex-direction: column-reverse;
 }
