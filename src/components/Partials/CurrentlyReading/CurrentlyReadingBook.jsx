@@ -26,7 +26,7 @@ export default function CurrentlyReadingBook({book}) {
 
         else{
             const thisSearchResult = await response.json()
-            navigate('../searchResult',{state:{thisSearchResult}});
+            navigate('../searchResult',{state:{thisSearchResult,author:book.book.author_name}});
         }
     }
     

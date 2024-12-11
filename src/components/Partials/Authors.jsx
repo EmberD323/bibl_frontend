@@ -21,7 +21,7 @@ export default function Authors ({authors}){
 
         else{
             const thisSearchResult = await response.json()
-            navigate('../searchResult',{state:{thisSearchResult}});
+            navigate('../searchResult',{state:{thisSearchResult,author:e.target.textContent}});
         }
     }
     return (

@@ -23,7 +23,7 @@ export default function SuggestionBook({book}) {
         }
         else{
             const thisSearchResult = await response.json()
-            navigate('../searchResult',{state:{thisSearchResult}});
+            navigate('../searchResult',{state:{thisSearchResult,author:book.author_name}});
         }
     }
     return(

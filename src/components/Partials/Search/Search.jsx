@@ -22,6 +22,13 @@ export default function Search() {
     function handleIsbnChange(e){
         setISBN(e.target.value)
     }
+    function resetAllInputs(){
+        setQuery("");
+        setTitle("")
+        setAuthor("")
+        setISBN("");
+
+    }
 
     async function handleBasicSearch(e){
         e.preventDefault();
@@ -40,7 +47,8 @@ export default function Search() {
         else{
             const thisSearchResult = await response.json()
             setSearchResult(thisSearchResult)
-            navigate('../searchResult',{state:{thisSearchResult}});
+            resetAllInputs()
+            navigate('../searchResult',{state:{thisSearchResult,query}});
         }
     }
     function handleAdvanceReveal(){
@@ -72,7 +80,8 @@ export default function Search() {
         else{
             const thisSearchResult = await response.json()
             setSearchResult(thisSearchResult)
-            navigate('../searchResult',{state:{thisSearchResult}});
+            resetAllInputs()
+            navigate('../searchResult',{state:{thisSearchResult,isbn,title,author}});
         }
     }
     return (

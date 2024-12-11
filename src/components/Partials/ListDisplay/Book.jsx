@@ -26,7 +26,7 @@ export default function Book({book,selectedList,setSelectedList}) {
         }
         else{
             const thisSearchResult = await response.json()
-            navigate('../searchResult',{state:{thisSearchResult}});
+            navigate('../searchResult',{state:{thisSearchResult,author:book.book.author_name}});
         }
     }
     async function handleRemoveFromList(){
