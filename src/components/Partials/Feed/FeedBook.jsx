@@ -5,7 +5,9 @@ export default function FeedBook({book}) {
 
     const navigate = useNavigate()
     function handleBookOpen(e){
-        navigate('../bookInfo',{state:{book}});
+        console.log(book)
+        console.log(book.rated)
+        navigate('../bookInfo',{state:{book:book.rated}});
     }
     function handleListNavigation(e){
         let listID = e.target.id;

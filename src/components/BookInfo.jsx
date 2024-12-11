@@ -10,8 +10,10 @@ export default function BookInfo (){
     //get book from navigated state
     const{state} = useLocation();
     let selectedBook = state.book
+    console.log(selectedBook)
 
     //check if the book is on the user lists and add save list data if it is
+    console.log(lists)
     if(!selectedBook.assignedAt){ 
         if(selectedBook.volumeInfo){
             lists.map((list) => {
@@ -19,10 +21,20 @@ export default function BookInfo (){
                 for(let i=0;i<list.books.length;i++){
                     if(list.books[i].book.author_name == selectedBook.volumeInfo.authors[0] && list.books[i].book.title == selectedBook.volumeInfo.title){
                         selectedBook = list.books[i];
+                    }    
+                }
+            });
+        } 
+        else{
+            lists.map((list) => {
+                if(list.books.length == 0)return;
+                for(let i=0;i<list.books.length;i++){
+                    if(list.books[i].book.author_name == selectedBook.author_name && list.books[i].book.title == selectedBook.title){
+                        selectedBook = list.books[i];
                     }
                 }
             });
-        }  
+        } 
     }
 
     async function handleRemoveFromAllLists() {
