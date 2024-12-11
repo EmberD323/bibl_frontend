@@ -5,8 +5,8 @@ export default function CurrentlyReadingBook({book}) {
     const navigate = useNavigate()
     function handleBookOpen(e){
         navigate('../bookInfo',{state:{book}});
-
     }
+
     async function handleAuthorSearch(e){
         let searchTerm="https://www.googleapis.com/books/v1/volumes?q=inauthor:"+book.book.author_name;
         const response = await fetch(searchTerm,{
@@ -19,7 +19,6 @@ export default function CurrentlyReadingBook({book}) {
         else{
             const thisSearchResult = await response.json()
             navigate('../searchResult',{state:{thisSearchResult}});
-
         }
     }
     
@@ -30,7 +29,6 @@ export default function CurrentlyReadingBook({book}) {
         <div className="author" onClick={handleAuthorSearch} style={{cursor:"grab"}}>{book.book.author_name} </div>
         </>
     )
- 
 }
 
  

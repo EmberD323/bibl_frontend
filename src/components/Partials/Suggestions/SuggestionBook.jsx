@@ -18,7 +18,6 @@ export default function SuggestionBook({book}) {
         else{
             const thisSearchResult = await response.json()
             navigate('../searchResult',{state:{thisSearchResult}});
-
         }
     }
     return(

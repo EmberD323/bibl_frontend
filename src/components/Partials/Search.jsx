@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {useNavigate } from "react-router-dom";
 
 export default function Search() {
@@ -22,8 +22,8 @@ export default function Search() {
     function handleIsbnChange(e){
         setISBN(e.target.value)
     }
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
     async function handleBasicSearch(e){
         e.preventDefault();
         const response = await fetch("https://www.googleapis.com/books/v1/volumes?q="+query+"&maxResults=40",{
@@ -37,8 +37,6 @@ export default function Search() {
             const thisSearchResult = await response.json()
             setSearchResult(thisSearchResult)
             navigate('../searchResult',{state:{thisSearchResult}});
-
-            //navigate to search result page with search results - check old projects for use location
         }
     }
     function handleAdvanceReveal(){
@@ -58,7 +56,7 @@ export default function Search() {
         const response = await fetch(searchTerm,{
             method: "GET",
         })
-        if(response.status != 200){//if theres errors
+        if(response.status != 200){
             const errors = await response.json();
             console.log(errors)
         }
@@ -66,10 +64,8 @@ export default function Search() {
             const thisSearchResult = await response.json()
             setSearchResult(thisSearchResult)
             navigate('../searchResult',{state:{thisSearchResult}});
-
         }
     }
-   //want book to include list info
     return (
        <div className="search">
         <form onSubmit={handleBasicSearch} className="basicSearch" >
@@ -86,11 +82,7 @@ export default function Search() {
             <input type="number" name="isbn" id="isbn" placeholder=""value={isbn} onChange={handleIsbnChange}/>
             <button type="submit">Search</button>
         </form>
-
-           
        </div>
     )
-
-    
 }
 

@@ -1,4 +1,4 @@
-import { useOutletContext,useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 export default function ListDeleteButton({list}){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
@@ -21,7 +21,7 @@ export default function ListDeleteButton({list}){
             setEdit(!edit);       
         }        
     }
-    if(list.name == "Currently reading" || list.name == "To be read" || list.name == "Read") return
+    if(list.name == "Currently reading" || list.name == "To be read" || list.name == "Read") return;
     return(
         <button onClick={handleListDelete}>Delete List</button>
 

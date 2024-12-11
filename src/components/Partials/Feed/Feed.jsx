@@ -1,12 +1,11 @@
-import { Link,useNavigate,useOutletContext} from "react-router-dom";
+import { useOutletContext} from "react-router-dom";
 import FeedBook from "./FeedBook";
+
 export default function Feed() {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     if(lists == null){return}
 
     const allEvents=[];
-    const allRatings=[];
-
     lists.map((list) =>{
         list.books.map((book)=>{
             allEvents.push(book);
@@ -14,7 +13,6 @@ export default function Feed() {
                 allEvents.push({rated:book.book})
             }
         });
-
     });
     //order by date
     const sortedEvents = allEvents.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
@@ -33,7 +31,5 @@ export default function Feed() {
             </ul>
        </div>
     )
-
-    
 }
 

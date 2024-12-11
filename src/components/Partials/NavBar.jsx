@@ -35,15 +35,10 @@ function NavBar({token,setToken}) {
             <div className="navBar">
                 <h1 className="heading">Bibl</h1>
                 <div className="routes">
-                    <Link to="homepage">
-                        Home
-                    </Link>
-
-                    <Link to="myBooks">My Books
-                    </Link>
+                    <Link to="homepage">Home</Link>
+                    <Link to="myBooks">My Books</Link>
                     <Search/>
                 </div>
-                
                 <div className="user">
                     <button onClick={handleLogout}>Log out</button>
                 </div>

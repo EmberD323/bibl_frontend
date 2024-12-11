@@ -1,7 +1,7 @@
 import { useOutletContext,useLocation } from "react-router-dom";
 import { useState } from "react";
 
-import CurrentList from "./Partials/CurrentList";
+import CurrentList from "./Partials/ListDisplay/CurrentList";
 import Errors from "./Partials/Errors";
 import  ListDeleteButton  from "./Partials/ListDeleteButton";
 

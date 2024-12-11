@@ -1,11 +1,10 @@
-import { useNavigate,useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
 
-export default function AddBook({book,}) {
+export default function AddBook({book}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const [selectedList, setSelectedList] = useState("")
     const [hideAdded, setHideAdded] = useState(true)
-
 
     async function handleBookAdd(e){
         e.preventDefault()
@@ -36,21 +35,16 @@ export default function AddBook({book,}) {
                 },
                 body: JSON.stringify({title:bookInfo[0],name:bookInfo[1],imageURL:bookInfo[2],category:bookInfo[3],description:bookInfo[4],
                     pageCount:bookInfo[5],publishDate:bookInfo[6]}),
-            });
-             
+            }); 
         }
-
         if(response.status != 200){//if theres errors
             const errors = await response.json();
-            console.log(errors)
+            console.error(errors)
         }
         else{
             setEdit(!edit);
             setHideAdded(!hideAdded)
-            
         }
-        
-
     }
      function handleListChange(e){
         let listName = e.target.value;
@@ -59,10 +53,8 @@ export default function AddBook({book,}) {
     }
     
     return(
-        <>
         <form onSubmit={handleBookAdd}>
             <label htmlFor="list-select">Add to a list:</label>
-
             <select name="list" id="list-select" onChange={handleListChange}>
             <option value="">--Please choose an option--</option>
             {lists.map((list) => {
@@ -73,13 +65,8 @@ export default function AddBook({book,}) {
             </select>
             <button type="submit">Add to List</button>
             <div className="bookAddedAnnounce" id={String(hideAdded)}>Book added to {selectedList.name}!</div>
-
-
         </form>
-        
-        </>
     )
- 
 }
 
  

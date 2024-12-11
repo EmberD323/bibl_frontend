@@ -3,7 +3,6 @@ import { useNavigate,useOutletContext } from "react-router-dom";
 export default function FeedBook({book}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
 
-    
     const navigate = useNavigate()
     function handleBookOpen(e){
         navigate('../bookInfo',{state:{book}});
@@ -13,6 +12,7 @@ export default function FeedBook({book}) {
         let list = (lists.filter((listSearch)=>listSearch.id == listID))[0]
         navigate('../myBooks',{state:{list}});
     }
+
     if(book.rated){
         const dateTime = new Date((Date.parse(book.rated.ratings[0].assignedAt)))
         const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
@@ -34,7 +34,6 @@ export default function FeedBook({book}) {
         <img src={book.book.imageURL}onClick={handleBookOpen} style={{cursor:"grab"}} alt="book_cover" />
         </>
     )
- 
 }
 
  
