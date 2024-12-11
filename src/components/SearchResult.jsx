@@ -5,8 +5,17 @@ export default function SearchResult (){
     //get searchResult from navigation state
     const { state } = useLocation();
     const { thisSearchResult } = state;
-    window.scrollTo(0, 0);
-
+    console.log(thisSearchResult)
+    //if no search results
+    if(thisSearchResult.totalItems == 0){
+       return(
+         <div className="searchResults">
+            <h2>Search Results</h2>
+            <div>No results found</div>
+            
+        </div>
+        )
+    }
     //filter results to make sure they have authors and images
     let filteredBooks = [];
     thisSearchResult.items.map((book) =>{
