@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import Authors from "./Authors";
+import Authors from "../Authors";
 
 export default function SearchBook({book}) {
- 
+ window.scroll(0,0)
     const navigate = useNavigate()
     function handleBookOpen(e){
         navigate('../bookInfo',{state:{book}});

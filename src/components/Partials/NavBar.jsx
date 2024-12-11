@@ -1,5 +1,5 @@
 import { Link,useNavigate} from "react-router-dom";
-import Search from "./Search"
+import Search from "./Search/Search"
 
 function NavBar({token,setToken}) {
     const navigate = useNavigate()

@@ -1,11 +1,10 @@
 import { useLocation } from "react-router-dom";
-import SearchBook from "./Partials/SearchBook";
+import SearchBook from "./Partials/Search/SearchBook";
 
 export default function SearchResult (){
     //get searchResult from navigation state
     const { state } = useLocation();
     const { thisSearchResult } = state;
-    console.log(thisSearchResult)
     //if no search results
     if(thisSearchResult.totalItems == 0){
        return(
