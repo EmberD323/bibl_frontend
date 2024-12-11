@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useOutletContext } from "react-router-dom";
 
 export default function SuggestionBook({book}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();

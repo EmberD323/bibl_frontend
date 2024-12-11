@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./styles/App.css"
-import { Outlet } from "react-router-dom";
+import { Outlet,useNavigate } from "react-router-dom";
 import NavBar from "./components/Partials/NavBar"
 
 const App = () => {
@@ -11,10 +11,12 @@ const App = () => {
   const [error,setError]=useState(null);
   const [loading,setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState(null)
+  const navigate = useNavigate()
 
 
   //fetch lists
   useEffect(()=>{
+    let response;
     if(token != null){
       fetch(import.meta.env.VITE_BACKEND +"/lists",{
         method: "GET",
@@ -24,11 +26,24 @@ const App = () => {
           "authorization": "Bearer " +token
         }
       })
-      .then((response)=>response.json())
-      .then((json)=>{
-        setLists(json)
+      .then((response)=>{
+        if(response.status == 403){
+          localStorage.removeItem("token");
+          setToken(null);
+          navigate('../login');
+        }
+        if(response.ok){
+          return response.json();
+        }
       })
+      .then((json)=>setLists(json))
       .catch((error)=>{
+        console.log(response)
+        if(response.status == 403){
+          localStorage.removeItem("token");
+          setToken(null);
+          navigate('../login');
+        }
         console.log(error)
         setError(error)
       })

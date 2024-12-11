@@ -19,6 +19,7 @@ export default function Login (){
     async function handleSubmit(e){
         e.preventDefault();
         try {
+            console.log(username,password)
             const response = await fetch(import.meta.env.VITE_BACKEND +"/login", {
               method: "POST",
               mode:"cors",
@@ -26,7 +27,7 @@ export default function Login (){
                 "Content-Type": "application/json"
                 },
               body: JSON.stringify({username,password}),
-            });        
+            }); 
             if(response.status != 200){
                 const json = await response.json();
                 setFormErrors(json.errors)
@@ -34,7 +35,6 @@ export default function Login (){
                 //add token to local storage
                 const json = await response.json();
                 const thisToken = json.token;
-                console.log(json)
                 setToken(thisToken)
                 localStorage.setItem("token", thisToken);
                 navigate('../homepage');
