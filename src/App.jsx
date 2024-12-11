@@ -5,13 +5,13 @@ import NavBar from "./components/Partials/NavBar"
 
 const App = () => {
   const initalToken = localStorage.getItem("token");
-  console.log(initalToken)
   const [token,setToken] = useState(initalToken);
   const [edit,setEdit] = useState(true); 
   const [lists,setLists]=useState(null);
   const [error,setError]=useState(null);
   const [loading,setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState(null)
+
 
   //fetch lists
   useEffect(()=>{
@@ -32,6 +32,10 @@ const App = () => {
         console.log(error)
         setError(error)
       })
+    }
+    else{
+      setLists(null)
+      setSuggestions(null)
     }
   },[edit,token])
   //fetch suggestions
