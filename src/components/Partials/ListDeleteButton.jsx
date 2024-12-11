@@ -1,9 +1,8 @@
 import { useOutletContext,useNavigate } from "react-router-dom";
 
-export default function ListDeleteButton({list}){
+export default function ListDeleteButton({list,setSelectedList,selectedList}){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const navigate = useNavigate()
-
     async function handleListDelete(e) {
         const listID = e.target.parentNode.id;
         const response = await fetch(import.meta.env.VITE_BACKEND+"/lists/"+listID, {
@@ -24,7 +23,10 @@ export default function ListDeleteButton({list}){
             console.log(errors)
         }
         else{
-            setEdit(!edit);       
+            setEdit(!edit);    
+            if(selectedList.id == list.id){
+                setSelectedList(null)
+            }
         }        
     }
     if(list.name == "Currently reading" || list.name == "To be read" || list.name == "Read") return;

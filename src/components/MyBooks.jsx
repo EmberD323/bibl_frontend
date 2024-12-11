@@ -65,7 +65,7 @@ export default function MyBooks (){
                     return(
                         <li key={list.id} id ={list.id} >
                             <div className="name" onClick={handleListOpen} style={{cursor:"grab"}}>{list.name} ({list.books.length}) </div>
-                            <ListDeleteButton list={list}/>
+                            <ListDeleteButton list={list} setSelectedList={setSelectedList} selectedList={selectedList}/>
                         </li>
                     )
                 })}

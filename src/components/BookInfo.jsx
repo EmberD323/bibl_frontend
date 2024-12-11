@@ -78,9 +78,6 @@ export default function BookInfo (){
             navigate('../searchResult',{state:{thisSearchResult}});
         }
     }
-    //make sure screen is scrolled top top on load
-    window.scrollTo(0, 0);
-
     //if book is on a user list
     if(selectedBook.assignedAt) return (
         <div className="bookInfo">
