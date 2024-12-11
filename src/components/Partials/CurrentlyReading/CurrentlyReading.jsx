@@ -3,10 +3,12 @@ import CurrentlyReadingBook from "./CurrentlyReadingBook";
 
 export default function CurrentlyReading() {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+    const navigate = useNavigate()
+    
+    if(lists == null ) return
 
     const CurrentlyReadingList = (lists.filter((list) => list.name == "Currently reading"))[0];
 
-    const navigate = useNavigate()
     function handleCurrentlyReadingOpen(e){
         navigate('../myBooks',{state:{list:CurrentlyReadingList}});
     }

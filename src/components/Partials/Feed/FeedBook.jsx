@@ -15,7 +15,9 @@ export default function FeedBook({book}) {
 
     if(book.rated){
         const dateTime = new Date((Date.parse(book.rated.ratings[0].assignedAt)))
-        const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
+        console.log(dateTime)
+
+        const dayMonthYear = dateTime.getDate()+"/"+(dateTime.getUTCMonth()+1)+"/"+dateTime.getFullYear();
         return(
         <>
         <div>You rated <span onClick={handleBookOpen} style={{cursor:"grab"}}>{book.rated.title}</span> {book.rated.ratings[0].rating} Stars </div>
@@ -24,7 +26,7 @@ export default function FeedBook({book}) {
         </>
     )}
     const dateTime = new Date((Date.parse(book.assignedAt)))
-    const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
+    const dayMonthYear = dateTime.getDate()+"/"+(dateTime.getUTCMonth()+1)+"/"+dateTime.getFullYear();
     return(
         <>
         <div>You added <span onClick={handleBookOpen} style={{cursor:"grab"}}>{book.book.title}</span> to 
