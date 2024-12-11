@@ -1,10 +1,11 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext,useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function AddBook({book}) {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const [selectedList, setSelectedList] = useState("")
     const [hideAdded, setHideAdded] = useState(true)
+    const navigate = useNavigate()
 
     async function handleBookAdd(e){
         e.preventDefault()
@@ -37,9 +38,14 @@ export default function AddBook({book}) {
                     pageCount:bookInfo[5],publishDate:bookInfo[6]}),
             }); 
         }
-        if(response.status != 200){//if theres errors
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
-            console.error(errors)
+            console.log(errors)
         }
         else{
             setEdit(!edit);

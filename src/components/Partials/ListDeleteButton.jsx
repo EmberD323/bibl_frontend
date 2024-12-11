@@ -1,7 +1,8 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext,useNavigate } from "react-router-dom";
 
 export default function ListDeleteButton({list}){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+    const navigate = useNavigate()
 
     async function handleListDelete(e) {
         const listID = e.target.parentNode.id;
@@ -13,7 +14,12 @@ export default function ListDeleteButton({list}){
               "authorization": "Bearer " +token
             },
         }); 
-        if(response.status != 200){//if theres errors
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             console.log(errors)
         }

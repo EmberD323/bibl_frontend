@@ -1,9 +1,11 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext,useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 export default function Rate ({book}){
 
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const [ratingClicked,setRatingClicked] = useState(undefined)
+    const navigate = useNavigate()
+
 
     useEffect(()=>{
         if(book.book.ratings[0] != undefined){
@@ -22,7 +24,12 @@ export default function Rate ({book}){
             },
             body: JSON.stringify({rating:e.target.id}),
         }); 
-        if(response.status != 200){//if theres errors
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             console.log(errors)
         }

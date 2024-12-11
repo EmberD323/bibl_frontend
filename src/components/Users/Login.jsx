@@ -34,6 +34,7 @@ export default function Login (){
                 //add token to local storage
                 const json = await response.json();
                 const thisToken = json.token;
+                console.log(json)
                 setToken(thisToken)
                 localStorage.setItem("token", thisToken);
                 navigate('../homepage');

@@ -15,8 +15,6 @@ export default function FeedBook({book}) {
 
     if(book.rated){
         const dateTime = new Date((Date.parse(book.rated.ratings[0].assignedAt)))
-        console.log(dateTime)
-
         const dayMonthYear = dateTime.getDate()+"/"+(dateTime.getUTCMonth()+1)+"/"+dateTime.getFullYear();
         return(
         <>

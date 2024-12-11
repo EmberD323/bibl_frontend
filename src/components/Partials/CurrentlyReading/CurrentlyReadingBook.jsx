@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 export default function CurrentlyReadingBook({book}) {
- 
+    const [token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions] = useOutletContext();
+
     const navigate = useNavigate()
     function handleBookOpen(e){
         navigate('../bookInfo',{state:{book}});
@@ -12,10 +13,17 @@ export default function CurrentlyReadingBook({book}) {
         const response = await fetch(searchTerm,{
             method: "GET",
         })
-        if(response.status != 200){//if theres errors
+        
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             console.log(errors)
         }
+
         else{
             const thisSearchResult = await response.json()
             navigate('../searchResult',{state:{thisSearchResult}});

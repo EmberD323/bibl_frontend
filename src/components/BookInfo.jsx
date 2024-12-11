@@ -6,7 +6,7 @@ import { BookOnLists } from "./Partials/BookOnLists";
 
 export default function BookInfo (){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
-    
+    const navigate = useNavigate()
     //get book from navigated state
     const{state} = useLocation();
     let selectedBook = state.book
@@ -34,7 +34,12 @@ export default function BookInfo (){
               "authorization": "Bearer " +token
             },
         }); 
-        if(response.status != 200){//if theres errors
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             console.log(errors)
         }
@@ -44,13 +49,17 @@ export default function BookInfo (){
     }
     
     //navigate to author search
-    const navigate = useNavigate()
     async function handleAuthorSearch(e){
         let searchTerm="https://www.googleapis.com/books/v1/volumes?q=inauthor:"+e.target.textContent;
         const response = await fetch(searchTerm,{
             method: "GET",
         })
-        if(response.status != 200){//if theres errors
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             console.log(errors)
         }

@@ -28,7 +28,7 @@ export default function HomePage (){
             <h2>Homepage</h2>
             <div className="content">
               <CurrentlyReading/>
-              <Suggestions /> 
+              <Suggestions/> 
               <Feed/>
             </div>
         </div>    

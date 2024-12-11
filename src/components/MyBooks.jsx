@@ -1,4 +1,4 @@
-import { useOutletContext,useLocation } from "react-router-dom";
+import { useOutletContext,useLocation,useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import CurrentList from "./Partials/ListDisplay/CurrentList";
@@ -7,6 +7,8 @@ import  ListDeleteButton  from "./Partials/ListDeleteButton";
 
 export default function MyBooks (){
     const [token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions] = useOutletContext();
+    const navigate = useNavigate()
+
     window.scrollTo(0, 0);
 
     //if user navigated here through clicking a list name, open that list on load
@@ -40,7 +42,12 @@ export default function MyBooks (){
             },
             body: JSON.stringify({name}),
         }); 
-        if(response.status != 200){//if theres errors
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             setErrors(errors)
         }

@@ -7,8 +7,8 @@ export default function Search() {
     const[title,setTitle] = useState("");
     const[author,setAuthor] = useState("");
     const[isbn,setISBN] = useState("");
-
     const[searchResult,setSearchResult] = useState("");
+    const navigate = useNavigate()
 
     function handleQueryChange(e){
         setQuery(e.target.value)
@@ -23,13 +23,17 @@ export default function Search() {
         setISBN(e.target.value)
     }
 
-    const navigate = useNavigate()
     async function handleBasicSearch(e){
         e.preventDefault();
         const response = await fetch("https://www.googleapis.com/books/v1/volumes?q="+query+"&maxResults=40",{
             method: "GET",
         })
-        if(response.status != 200){//if theres errors
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             console.log(errors)
         }
@@ -56,7 +60,12 @@ export default function Search() {
         const response = await fetch(searchTerm,{
             method: "GET",
         })
-        if(response.status != 200){
+        if(response.status == 403){//if token is expired - log out and nav to login
+            localStorage.removeItem("token");
+            setToken(null);
+            navigate('../login');
+        }
+        if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
             console.log(errors)
         }
