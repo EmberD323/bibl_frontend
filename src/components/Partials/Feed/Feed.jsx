@@ -1,7 +1,6 @@
 import { useOutletContext} from "react-router-dom";
 import FeedBook from "./FeedBook";
 import { useState } from "react";
-import { func } from "prop-types";
 
 export default function Feed() {
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
@@ -22,6 +21,12 @@ export default function Feed() {
     });
     //order by date
     const sortedEvents = allEvents.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
+    if(sortedEvents.length == 0)return(
+        <div className="feed">
+           <div className="title">My Feed</div>
+           <div>Add or rate some books!</div>
+       </div>
+    )
     if(sortedEvents.length>sortedEvents.slice(-count).length) return (
        <div className="feed">
            <div className="title">My Feed</div>
