@@ -8,14 +8,16 @@ export default  function Suggestions() {
     
     return (
        <div className="suggestions" >
-           <div className="title" >Suggestions</div>
-            {suggestions.map((book) => {
-                    return(
-                        <li key={book.id} >
-                            <SuggestionBook book={book}/>
-                        </li>
-                    )
-                })}
+           <h2 className="title" >Suggestions</h2>
+            <ul>
+                {suggestions.map((book) => {
+                        return(
+                            <li key={book.id} >
+                                <SuggestionBook book={book}/>
+                            </li>
+                        )
+                    })}
+            </ul>
        </div>
     )
 }

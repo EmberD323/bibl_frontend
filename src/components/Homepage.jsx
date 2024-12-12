@@ -24,10 +24,11 @@ export default function HomePage (){
     //if logged in
     return (
         <div className="homepage">
-            <h2>Homepage</h2>
             <div className="content">
-              <CurrentlyReading/>
-              <Suggestions/> 
+              <div className="lists">
+                <CurrentlyReading/>
+                <Suggestions/>
+              </div>
               <Feed/>
             </div>
         </div>    

@@ -14,13 +14,13 @@ export default function CurrentlyReading() {
     }
     if(CurrentlyReadingList.books[0] == undefined)return(
         <div className="currentlyReading">
-           <div className="title" onClick={handleCurrentlyReadingOpen} style={{cursor:"grab"}}>Currently Reading</div>
-           <div>Add some books to your Currently Reading list!</div>
+           <h2 className="title" onClick={handleCurrentlyReadingOpen} style={{cursor:"grab"}}>Currently Reading</h2>
+           <div className="empty">Add some books to your <span style={{cursor:"grab"}} className="underline">Currently Reading</span> list.</div>
        </div>
     )
     return (
        <div className="currentlyReading">
-           <div className="title" onClick={handleCurrentlyReadingOpen} style={{cursor:"grab"}}>Currently Reading</div>
+           <h2 className="title" onClick={handleCurrentlyReadingOpen} style={{cursor:"grab"}}>Currently Reading</h2>
            <ul>
                 {CurrentlyReadingList.books.map((book) => {
                     return(

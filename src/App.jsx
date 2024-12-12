@@ -84,7 +84,7 @@ const App = () => {
                       }
                   }
               })
-              const eightBooks = booksNotOnUsersLists.slice(-9,-1)
+              const eightBooks = booksNotOnUsersLists.slice(-10,-1)
               //add 8 to suggestions
               setSuggestions(eightBooks)
             })

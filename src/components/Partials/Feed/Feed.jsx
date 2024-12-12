@@ -23,13 +23,13 @@ export default function Feed() {
     const sortedEvents = allEvents.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
     if(sortedEvents.length == 0)return(
         <div className="feed">
-           <div className="title">My Feed</div>
-           <div>Add or rate some books!</div>
+           <h2 className="title">My Feed</h2>
+           <ul className="empty"><li>Add or rate some books!</li></ul>
        </div>
     )
     if(sortedEvents.length>sortedEvents.slice(-count).length) return (
        <div className="feed">
-           <div className="title">My Feed</div>
+           <h2 className="title">My Feed</h2>
            <ul>
                 {sortedEvents.slice(-count).map((book) => {
                     return(
@@ -44,7 +44,7 @@ export default function Feed() {
     )
     return(
         <div className="feed">
-           <div className="title">My Feed</div>
+           <h2 className="title">My Feed</h2>
            <ul>
                 {sortedEvents.map((book) => {
                     return(
@@ -54,7 +54,7 @@ export default function Feed() {
                     )
                 })}
             </ul>
-            <div>End of feed</div>
+            <div className="end">End of feed</div>
        </div>
     )
 }
