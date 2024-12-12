@@ -14,24 +14,26 @@ export default function BookInfo (){
     //check if the book is on the user lists and add save list data if it is
     if(!selectedBook.assignedAt){ 
         if(selectedBook.volumeInfo){
-            lists.map((list) => {
-                if(list.books.length == 0)return;
-                for(let i=0;i<list.books.length;i++){
-                    if(list.books[i].book.author_name == selectedBook.volumeInfo.authors[0] && list.books[i].book.title == selectedBook.volumeInfo.title){
-                        selectedBook = list.books[i];
+            listLoop: for(let y=0;y<lists.length;y++){
+                if(lists[y].books.length == 0)return;
+                for(let i=0;i<lists[y].books.length;i++){
+                    if(lists[y].books[i].book.author_name == selectedBook.volumeInfo.authors[0] && lists[y].books[i].book.title == selectedBook.volumeInfo.title){
+                        selectedBook = lists[y].books[i];
+                        break listLoop;
                     }    
                 }
-            });
+            }  
         } 
         else{
-            lists.map((list) => {
-                if(list.books.length == 0)return;
-                for(let i=0;i<list.books.length;i++){
-                    if(list.books[i].book.author_name == selectedBook.author_name && list.books[i].book.title == selectedBook.title){
-                        selectedBook = list.books[i];
-                    }
+            listLoop2: for(let y=0;y<lists.length;y++){
+                if(lists[y].books.length == 0)return;
+                for(let i=0;i<lists[y].books.length;i++){
+                    if(lists[y].books[i].book.author_name == selectedBook.author_name[0] && lists[y].books[i].book.title == selectedBook.title){
+                        selectedBook = lists[y].books[i];
+                        break listLoop2;
+                    }    
                 }
-            });
+            }
         } 
     }
 
@@ -51,7 +53,6 @@ export default function BookInfo (){
         }
         if(response.status != 200 && response.status != 403){//if theres errors
             const errors = await response.json();
-            console.log(errors)
         }
         else{
             setEdit(!edit);

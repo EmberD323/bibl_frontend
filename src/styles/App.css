@@ -54,18 +54,32 @@ body{
 }
 .basicSearch{
   display:flex;
+  flex-direction: column;
   gap:5px;
-  align-items: flex-start;
 }
+.basicSearch>.query{
+  border:var(--peach-yellow) 2px solid;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
 
-.basicSearch>.inputAndAdvance>input,.advancedSearch>div>div>input{
+}
+.basicSearch>.query>input{
+  background-color: var(--rojo);
+  color: var(--peach-yellow);
+  border-radius: 5px;
+  font-size: 15px;
+  border:0;
+
+}
+.advancedSearch>div>div>input{
   background-color: var(--rojo);
   border:var(--peach-yellow) 2px solid;
   color: var(--peach-yellow);
   border-radius: 5px;
   font-size: 15px;
 }
-.basicSearch>.inputAndAdvance>div{
+.basicSearch>.advance{
   font-size: 12px;
   padding-top: 5px;
   text-decoration: underline solid;
@@ -73,10 +87,10 @@ body{
 input:focus{
   outline:none;
 }
-.basicSearch>button{
+.basicSearch>.query>button{
   background-color: var(--rojo);
   padding:0px;
-  border:0;
+  border-color: rgba(128, 128, 128, 0.342);
 }
 .advancedSearch>button{
   background-color: var(--rojo);
@@ -84,7 +98,9 @@ input:focus{
   align-items: center;
   gap:5px;
   padding: 2px 5px;
-  color:var(--peach-yellow)
+  color:var(--peach-yellow);
+  border-color: rgba(128, 128, 128, 0.342);
+
 }
 .advancedSearch>div{
   display: flex;
@@ -225,7 +241,7 @@ span.underline{
 ul.empty>li{
 justify-content: center;
 }
-button:focus,button:hover{
+.showMore:focus,.showMore:hover{
   box-shadow: 0px 0px 5px 0px rgb(5, 5, 5); 
 
 }

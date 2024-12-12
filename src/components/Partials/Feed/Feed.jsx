@@ -39,7 +39,7 @@ export default function Feed() {
                     )
                 })}
             </ul>
-            <button onClick={handleShowMore}>Show more</button>
+            <button className="showMore" onClick={handleShowMore}>Show more</button>
        </div>
     )
     return(

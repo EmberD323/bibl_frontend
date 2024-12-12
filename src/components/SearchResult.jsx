@@ -36,13 +36,11 @@ export default function SearchResult (){
     }
     //filter results to make sure they have authors and images
     let filteredBooks = [];
-    console.log(thisSearchResult)
     thisSearchResult.items.map((book) =>{
         if(book.volumeInfo.imageLinks != undefined && book.volumeInfo.authors != undefined && book.volumeInfo.pageCount != 0){
             filteredBooks.push(book)
         }
     });
-    console.log(filteredBooks)
 
     if(!state.query)
         return (

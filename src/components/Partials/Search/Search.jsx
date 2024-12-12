@@ -87,12 +87,13 @@ export default function Search() {
     return (
        <div className="search">
         <form onSubmit={handleBasicSearch} className="basicSearch" >
-            <div className="inputAndAdvance">
+            <div className="query">
                 <input type="text" name="query" id="query" value={query} onChange={handleQueryChange} required/>
-                <div  onClick={handleAdvanceReveal} style={{cursor:"grab"}}>Advanced Search</div>
+                <button type="submit"><img width="22" height="22" src="https://img.icons8.com/ios-glyphs/30/f2d398/search--v1.png" alt="search--v1"/></button>
             </div>
+            <div className="advance" onClick={handleAdvanceReveal} style={{cursor:"grab"}}>Advanced Search</div>
 
-            <button type="submit"><img width="22" height="22" src="https://img.icons8.com/ios-glyphs/30/f2d398/search--v1.png" alt="search--v1"/></button>
+
         </form>
         <form onSubmit={handleAdvanceSearch} className="advancedSearch" id={String(advanceVisibility)}>
             <div className="inputs">
