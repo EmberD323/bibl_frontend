@@ -2,21 +2,110 @@
 
   margin: 0 auto;
   text-align: center;
-
+  --rojo: #de1a1aff;
+  --ghost-white: #e8ebf7ff;
+  --powder-blue: #acbed8ff;
+  --peach-yellow: #f2d398ff;
+  --fulvous: #d78521ff;
+  font-family: "Ubuntu", sans-serif;
 }
 body{
   margin: 0;
+}
+.navBar{
+  display:flex;
+  background-color: var(--rojo);
+  color: var(--peach-yellow);
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0px;
+
+}
+.navBar>.heading,.navBar>.routes{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.navBar>.routes{
+  gap:20px;
+}
+.navBar>.routes>a{
+  color: var(--peach-yellow);
+  font-size: 20px;
+}
+.navBar>.user{
+  display: flex;
+  gap:20px;
+  font-size: 20px;
+}
+.navBar>.user>a{
+  color: var(--peach-yellow);
+
+}
+.search{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:7px
+}
+.basicSearch{
+  display:flex;
+  gap:5px;
+  align-items: flex-start;
+}
+
+.basicSearch>.inputAndAdvance>input,.advancedSearch>div>div>input{
+  background-color: var(--rojo);
+  border:var(--peach-yellow) 2px solid;
+  color: var(--peach-yellow);
+  border-radius: 5px;
+  font-size: 15px;
+}
+.basicSearch>.inputAndAdvance>div{
+  font-size: 12px;
+  padding-top: 5px;
+  text-decoration: underline solid;
+}
+input:focus{
+  outline:none;
+}
+.basicSearch>button{
+  background-color: var(--rojo);
+  padding:0px;
+  border:0;
+}
+.advancedSearch>button{
+  background-color: var(--rojo);
+  display: flex;
+  align-items: center;
+  gap:5px;
+  padding: 2px 5px;
+  color:var(--peach-yellow)
+}
+.advancedSearch>div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap:5px
+}
+.advancedSearch>div>div{
+  display: flex;
+  gap:5px;
+  font-size: 12px;
+  align-items: center;
 }
 .advancedSearch#false,.bookAddedAnnounce#true{
   display: none;
 }
 .advancedSearch#true,.bookAddedAnnounce#false{
-  display: block;
+  display: flex;
+  align-items: center;
+  gap:10px
 }
 .homepage>.content{
   display:flex;
 }
-.feed>ul,.currentList>ul{
+.feed>ul,.currentList>ul {
   display:flex;
   flex-direction: column-reverse;
 }

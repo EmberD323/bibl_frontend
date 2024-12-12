@@ -12,7 +12,6 @@ export default function CurrentlyReading() {
     function handleCurrentlyReadingOpen(e){
         navigate('../myBooks',{state:{list:CurrentlyReadingList}});
     }
-    console.log(CurrentlyReadingList.books[0])
     if(CurrentlyReadingList.books[0] == undefined)return(
         <div className="currentlyReading">
            <div className="title" onClick={handleCurrentlyReadingOpen} style={{cursor:"grab"}}>Currently Reading</div>

@@ -9,16 +9,18 @@ function NavBar({token,setToken}) {
         setToken(null);
         navigate('../login');
     }
+    function handleNavigateHome(){
+        navigate("../homepage")
+    }
     //if token is null
     if(typeof token == "object"){
         return (
             <div className="navBar">
-                <h1 className="heading">Bibl</h1>
-                <div className="routes">
-                    <Link to="homepage">
-                        <div>Home</div>
-                    </Link>
+                <div className="heading" style={{cursor:"grab"}} onClick={handleNavigateHome}>
+                    <h1>Bibl</h1>
+                    <img width="60" height="60" src="https://img.icons8.com/connect/100/f2d398/book.png" alt="book"/>
                 </div>
+                
                 <div className="user">
                     <Link to="login">
                         <div>Log in</div>
@@ -33,14 +35,17 @@ function NavBar({token,setToken}) {
     else{
         return(
             <div className="navBar">
-                <h1 className="heading">Bibl</h1>
+                <div className="heading" style={{cursor:"grab"}} onClick={handleNavigateHome}>
+                    <h1>Bibl</h1>
+                    <img width="60" height="60" src="https://img.icons8.com/connect/100/f2d398/book.png" alt="book"/>
+                </div>
                 <div className="routes">
                     <Link to="homepage">Home</Link>
                     <Link to="myBooks">My Books</Link>
-                    <Search/>
                 </div>
-                <div className="user">
-                    <button onClick={handleLogout}>Log out</button>
+                <Search/>
+                <div style={{cursor:"grab"}} onClick={handleLogout} className="logout">
+                    <img width="60" height="60" src="https://img.icons8.com/connect/100/f2d398/exit.png" alt="logout"/>
                 </div>
             </div>
         )

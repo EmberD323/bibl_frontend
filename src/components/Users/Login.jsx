@@ -19,7 +19,6 @@ export default function Login (){
     async function handleSubmit(e){
         e.preventDefault();
         try {
-            console.log(username,password)
             const response = await fetch(import.meta.env.VITE_BACKEND +"/login", {
               method: "POST",
               mode:"cors",

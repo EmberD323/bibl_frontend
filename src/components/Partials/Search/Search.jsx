@@ -87,18 +87,29 @@ export default function Search() {
     return (
        <div className="search">
         <form onSubmit={handleBasicSearch} className="basicSearch" >
-            <input type="text" name="query" id="query" placeholder="Search for a book"value={query} onChange={handleQueryChange} required/>
-            <button type="submit">Search</button>
+            <div className="inputAndAdvance">
+                <input type="text" name="query" id="query" value={query} onChange={handleQueryChange} required/>
+                <div  onClick={handleAdvanceReveal} style={{cursor:"grab"}}>Advanced Search</div>
+            </div>
+
+            <button type="submit"><img width="22" height="22" src="https://img.icons8.com/ios-glyphs/30/f2d398/search--v1.png" alt="search--v1"/></button>
         </form>
-        <button  onClick={handleAdvanceReveal}>Advanced Search</button>
         <form onSubmit={handleAdvanceSearch} className="advancedSearch" id={String(advanceVisibility)}>
-            <label htmlFor="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="Book Title"value={title} onChange={handleTitleChange}/>
-            <label htmlFor="author">Author</label>
-            <input type="text" name="author" id="author" placeholder="Name"value={author} onChange={handleAuthorChange}/>
-            <label htmlFor="isbn">ISBN</label>
-            <input type="number" name="isbn" id="isbn" placeholder=""value={isbn} onChange={handleIsbnChange}/>
-            <button type="submit">Search</button>
+            <div className="inputs">
+                <div className="title">
+                    <label htmlFor="title">Title</label>
+                    <input type="text" name="title" id="title" value={title} onChange={handleTitleChange}/>
+                </div>
+                <div className="author">
+                    <label htmlFor="author">Author</label>
+                    <input type="text" name="author" id="author" value={author} onChange={handleAuthorChange}/>
+                </div>
+                <div className="isbn">
+                    <label htmlFor="isbn">ISBN</label>
+                    <input type="number" name="isbn" id="isbn" value={isbn} onChange={handleIsbnChange}/>
+                </div>
+            </div>
+            <button type="submit">  <img width="22" height="22" src="https://img.icons8.com/ios-glyphs/30/f2d398/search--v1.png" alt="search--v1"/></button>
         </form>
        </div>
     )

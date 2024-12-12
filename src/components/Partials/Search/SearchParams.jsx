@@ -2,7 +2,6 @@ import { useState } from "react";
 import {useNavigate } from "react-router-dom";
 
 export default function SearchParams({searchParams}) {
-    console.log(searchParams)
     let title = searchParams[0];
     if(title == undefined){title = ""}
     let author = searchParams[1];
