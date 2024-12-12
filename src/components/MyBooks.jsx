@@ -60,24 +60,29 @@ export default function MyBooks (){
     return (
         <div className="myBooks">
             <h2>My Books</h2>
-            <ul className="listCards">
-                {lists.map((list) => {
-                    return(
-                        <li key={list.id} id ={list.id} >
-                            <div className="name" onClick={handleListOpen} style={{cursor:"grab"}}>{list.name} ({list.books.length}) </div>
-                            <ListDeleteButton list={list} setSelectedList={setSelectedList} selectedList={selectedList}/>
-                        </li>
-                    )
-                })}
-            </ul>
-            <form onSubmit={handleNewListAdd} >
-                <label htmlFor="name">New List:</label>
-                <input type="text" name="name" id="name" value={name} onChange={handleNameChange} placeholder="list name" />
-                <button type="submit">+</button>
-                <Errors errors={errors}/>
-            </form>
-            <CurrentList selectedList={selectedList} setSelectedList={setSelectedList}/>
-            
+            <div className="content">
+                <div className="lists">
+                    <ul className="listCards">
+                        {lists.map((list) => {
+                            return(
+                                <li key={list.id} id ={list.id} >
+                                    <div className="name" onClick={handleListOpen} style={{cursor:"grab"}}>{list.name} ({list.books.length}) </div>
+                                    <ListDeleteButton list={list} setSelectedList={setSelectedList} selectedList={selectedList}/>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <form onSubmit={handleNewListAdd} >
+                        <label htmlFor="name">New List:</label>
+                        <input type="text" name="name" id="name" value={name} onChange={handleNameChange} placeholder="list name" />
+                        <button type="submit">+</button>
+                        <Errors errors={errors}/>
+                    </form>
+                </div>
+                <div className="currentList">
+                    <CurrentList selectedList={selectedList} setSelectedList={setSelectedList}/>
+                </div>
+            </div>
         </div>
         
     )

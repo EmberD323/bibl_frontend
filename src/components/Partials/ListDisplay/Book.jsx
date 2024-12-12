@@ -84,27 +84,39 @@ export default function Book({book,selectedList,setSelectedList}) {
     if(book.book.ratings[0] != undefined){
         return(
         <>
-            <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{ cursor: "grab" }}/>
-            <div className="title" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.title}</div>
-            <div className="author" onClick={handleAuthorSearch} style={{ cursor: "grab" }}>{book.book.author_name}</div>
-            <div>{dayMonthYear}</div>
-            <div className="rating">{book.book.ratings[0].rating} star rating</div>
-            <button onClick={handleRemoveFromList}>Remove from list</button>
-            <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
-            <AddBook book={book}/>
+            <td><img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{ cursor: "grab" }}/></td>
+            <td>
+                <div className="title" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.title}</div>
+            </td>
+            <td>
+                <div className="author" onClick={handleAuthorSearch} style={{ cursor: "grab" }}>{book.book.author_name}</div>
+            </td>
+            <td>{dayMonthYear}</td>
+            <td className="rating">{book.book.ratings[0].rating}</td>
+            <td><button onClick={handleRemoveFromList}>Remove from list</button></td>
+            <td><button onClick={handleRemoveFromAllLists}>Remove from all lists</button></td>
+            <td>
+                <AddBook book={book}/>
+            </td>
         </>
         )
     }
     return(
         <>
-            <img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{ cursor: "grab" }}/>
-            <div className="title" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.title}</div>
-            <div className="author" onClick={handleAuthorSearch} style={{ cursor: "grab" }}>{book.book.author_name}</div>
-            <div>{dayMonthYear}</div>
-            <div className="rating">Not yet rated</div>
-            <button onClick={handleRemoveFromList}>Remove from list</button>
-            <button onClick={handleRemoveFromAllLists}>Remove from all lists</button>
-            <AddBook book={book}/>
+            <td><img src={book.book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{ cursor: "grab" }}/></td>
+            <td>
+                <div className="title" onClick={handleBookOpen} style={{ cursor: "grab" }}>{book.book.title}</div>
+            </td>
+            <td>
+                <div className="author" onClick={handleAuthorSearch} style={{ cursor: "grab" }}>{book.book.author_name}</div>
+            </td>
+            <td>{dayMonthYear}</td>
+            <td className="rating">N/A</td>
+            <td><button onClick={handleRemoveFromList}>Remove from list</button></td>
+            <td><button onClick={handleRemoveFromAllLists}>Remove from all lists</button></td>
+            <td>
+                <AddBook book={book}/>
+            </td>
         </>
     )
 }
