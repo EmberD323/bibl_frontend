@@ -37,7 +37,6 @@ export default function Feed() {
         if(aDate > bDate) return 1
         else return 0
     });
-    console.log(sortedEvents)
     if(sortedEvents.length == 0)return(
         <div className="feed">
            <h2 className="title">My Feed</h2>

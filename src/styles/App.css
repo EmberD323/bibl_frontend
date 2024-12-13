@@ -265,8 +265,6 @@ li{
   grid-template-columns: 1fr 3fr;
   min-height: 100vh;
 }
-.myBooks>.content>*{
-}
 
 
 table{
@@ -464,9 +462,7 @@ form.addBook{
   gap:15px;
   margin:0 auto
 }
-.notLoggedIn{
 
-}
 .login>form,.signUp>form{
   display: flex;
   flex-direction: column;
