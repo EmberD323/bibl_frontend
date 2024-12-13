@@ -69,19 +69,18 @@ export default function AddBook({book}) {
         }
     })
     return(
-        <form onSubmit={handleBookAdd}>
-            <label htmlFor="list-select">Add to a list:</label>
+        <><form className="addBook" onSubmit={handleBookAdd}>
             <select name="list" id="list-select" onChange={handleListChange}>
-            <option value="">--Please choose an option--</option>
-            {listsToAdd.map((list) => {
-                return(
-                    <option key={list.id} value={list.name} id={list.id}>{list.name}</option>
-                )
-            })}
+                <option value="">--Please choose an option--</option>
+                {listsToAdd.map((list) => {
+                    return (
+                        <option key={list.id} value={list.name} id={list.id}>{list.name}</option>
+                    );
+                })}
             </select>
             <button type="submit">Add to List</button>
-            <div className="bookAddedAnnounce" id={String(hideAdded)}>Book added to {selectedList.name}!</div>
-        </form>
+
+        </form><div className="bookAddedAnnounce" id={String(hideAdded)}>Book added to {selectedList.name}!</div></>
     )
 }
 

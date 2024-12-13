@@ -26,7 +26,6 @@ export default function SuggestionBook({book}) {
             navigate('../searchResult',{state:{thisSearchResult,author:book.author_name}});
         }
     }
-    console.log(book)
     return(
         <>
         <img src={book.imageURL} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>

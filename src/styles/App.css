@@ -9,7 +9,7 @@
   --fulvous: #d78521ff;
   font-family: "Ubuntu", sans-serif;
 }
-button,input{
+button,input,select{
   font-family: "Ubuntu", sans-serif;
 
 }
@@ -182,7 +182,7 @@ input:focus{
   font-size: 12px;
 }
 
-.currentlyReading>ul>li>img,.suggestions>ul>li>img,.feed>ul>li>img,.feed>ul>li{
+.currentlyReading>ul>li>img,.suggestions>ul>li>img,.feed>ul>li>img,.feed>ul>li,.bookData>.info>img{
 
   box-shadow: 0px 0px 5px 0px rgb(5, 5, 5); 
 }
@@ -378,4 +378,78 @@ td{
   padding:10px;
   width:180px;
   box-shadow: 0px 0px 5px 1px rgb(5, 5, 5); 
+}
+.bookInfo{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.479);
+  min-height: 90vh;
+
+}
+
+.userData{
+  padding:10px 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.479);
+
+}
+.userData>h2,.userData>.rate>h3{
+  border-bottom: 2px var(--fulvous) solid;
+
+}
+.userData>.lists>ul>li{
+  display: flex;
+  gap:5px
+
+}
+.userData>.lists>ul{
+  padding:10px
+  
+}
+.userData>.lists>ul>li>button,.userData>button,form.addBook>button{
+  background-color: var(--peach-yellow);
+  border-radius: 5px;
+  border: 1px solid var(--fulvous);
+}
+.userData>.lists>ul>li>button:hover,.userData>button:hover,form.addBook>button:hover{
+  box-shadow: 0px 0px 2px 0px rgb(5, 5, 5); 
+
+}
+.userData,.rate{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap:10px;
+}
+
+
+form.addBook>select{
+  border-radius: 5px;
+  border: 1px solid var(--fulvous);
+
+}
+form.addBook{
+  display: flex;
+  gap: 10px;
+}
+
+.bookName{
+  text-decoration: underline;
+}
+.bookData{
+  padding:40px;
+}
+.bookData>.info{
+  display:flex;
+  gap:25px;
+  padding:20px;
+  border-bottom: 1px solid var(--fulvous);
+  margin-bottom:20px;
+
+}
+.bookData>.info>div{
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+  justify-content: center;
+  align-items: flex-start ;
 }

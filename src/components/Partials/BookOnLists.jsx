@@ -51,7 +51,8 @@ export function BookOnLists({book}){
                 return(
                     <li  key ={list.id} >
                         <div className="listName" id={list.id} style={{cursor:"grab"}} onClick={handleListNavigation}>{list.name} </div>
-                        <button id={list.id} onClick={handleRemoveFromList}>Remove from list</button>
+                        <button id={list.id} onClick={handleRemoveFromList}>< img id={list.id} width="12" height="12" src="https://img.icons8.com/ios-filled/50/d78521/waste.png" alt="waste"/></button>
+                        
 
                     </li>
                 )
