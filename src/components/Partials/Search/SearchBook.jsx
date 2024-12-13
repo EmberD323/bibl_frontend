@@ -11,7 +11,7 @@ export default function SearchBook({book}) {
         <>
         <img src={book.volumeInfo.imageLinks.thumbnail} alt="book_cover" onClick={handleBookOpen} style={{cursor:"grab"}}/>
         <div className="title" onClick={handleBookOpen} style={{cursor:"grab"}}>{book.volumeInfo.title}</div>
-        <Authors authors={book.volumeInfo.authors}/>
+        <div>{book.volumeInfo.authors[0]}</div>
         </>
     )
  

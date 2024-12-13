@@ -19,8 +19,12 @@ export default function SearchResult (){
         if(!state.query)return(
             <div className="searchResults">
                 <h2>Search Results</h2>
-                <SearchParams searchParams={searchParams}/>
-                <div>No results found</div>
+                <div className="queryAndResults">
+                    <SearchParams searchParams={searchParams}/>
+                    <div>Results: 0</div>
+
+                </div>
+                <div className="noResults">No results found</div>
             
             </div> 
         )
@@ -46,8 +50,10 @@ export default function SearchResult (){
         return (
         <div className="searchResults">
             <h2>Search Results</h2>
-            <SearchParams searchParams={searchParams}/>
-            <div>Results: {filteredBooks.length}</div>
+            <div className="queryAndResults">
+                <SearchParams searchParams={searchParams}/>
+                <div>Results: {filteredBooks.length}</div>
+            </div>
             <ul>
                 {filteredBooks.map((book) => {
                     return(
@@ -62,9 +68,10 @@ export default function SearchResult (){
     return (
         <div className="searchResults">
             <h2>Search Results</h2>
-            <div>Query: {query}</div>
-
-            <div>Results: {filteredBooks.length}</div>
+            <div className="queryAndResults">
+                <div className="query">Query: {query}</div>
+                <div>Results: {filteredBooks.length}</div>
+            </div>
             <ul>
                 {filteredBooks.map((book) => {
                     return(

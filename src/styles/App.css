@@ -343,3 +343,39 @@ td{
   font-size: 15px;
   color: gray;
 }
+.searchResults{
+  background-color: var(--ghost-white);
+  display: flex;
+  padding:20px 50px;
+
+  flex-direction: column;
+}
+.searchResults>ul{
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px;
+  justify-content: center;
+}
+.searchResults>h2{
+  border-bottom: 2px solid var(--fulvous);
+}
+
+.queryAndResults{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.query{
+  text-decoration: underline;
+  color: var(--fulvous);
+}
+.searchResults>ul>li>img{
+  width: 120px;
+  margin-bottom: 5px;
+}
+.searchResults>ul>li{
+  padding:10px;
+  width:180px;
+  box-shadow: 0px 0px 5px 1px rgb(5, 5, 5); 
+}

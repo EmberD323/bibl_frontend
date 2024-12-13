@@ -20,7 +20,7 @@ export default function SearchParams({searchParams}) {
     if(isbn ==""&& title !=""&& author !=""){returnedStatement = "Title: "+title+ " & " +"Author: "+author }
     if(isbn !=""&& title !=""&& author !=""){returnedStatement = "Title: "+title+ " & " +"Author: "+author+ " & " + "ISBN: "+isbn}
     return (
-       <div>{returnedStatement}</div>
+       <div className="query">{returnedStatement}</div>
     )
 }
 
