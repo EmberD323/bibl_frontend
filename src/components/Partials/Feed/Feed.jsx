@@ -20,7 +20,24 @@ export default function Feed() {
         });
     });
     //order by date
-    const sortedEvents = allEvents.sort((a, b) => new Date(a.assignedAt)- new Date(b.assignedAt));
+    const sortedEvents = allEvents.sort((a, b) => {
+        let aDate,bDate
+        if(a.rated){
+            aDate = new Date(a.rated.ratings[0].assignedAt)
+        }else{
+            aDate = new Date(a.assignedAt)
+        }
+
+        if(b.rated){
+            bDate = new Date(b.rated.ratings[0].assignedAt)
+        }else{
+            bDate = new Date(b.assignedAt)
+        }
+        if(aDate < bDate)return -1
+        if(aDate > bDate) return 1
+        else return 0
+    });
+    console.log(sortedEvents)
     if(sortedEvents.length == 0)return(
         <div className="feed">
            <h2 className="title">My Feed</h2>
