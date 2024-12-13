@@ -59,9 +59,9 @@ export default function MyBooks (){
     }
     return (
         <div className="myBooks">
-            <h2>My Books</h2>
             <div className="content">
                 <div className="lists">
+                    <h2 className="title">My Lists</h2>
                     <ul className="listCards">
                         {lists.map((list) => {
                             return(
@@ -72,12 +72,12 @@ export default function MyBooks (){
                             )
                         })}
                     </ul>
-                    <form onSubmit={handleNewListAdd} >
-                        <label htmlFor="name">New List:</label>
-                        <input type="text" name="name" id="name" value={name} onChange={handleNameChange} placeholder="list name" />
+                    <form className="newListForm"onSubmit={handleNewListAdd} >
+                        <input type="text" name="name" id="name" value={name} onChange={handleNameChange} placeholder="New List" />
                         <button type="submit">+</button>
-                        <Errors errors={errors}/>
                     </form>
+                    <Errors errors={errors}/>
+
                 </div>
                 <div className="currentList">
                     <CurrentList selectedList={selectedList} setSelectedList={setSelectedList}/>

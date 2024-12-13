@@ -141,7 +141,11 @@ input:focus{
   border: 2px var(--fulvous) solid;
   border-radius: 5px;
 }
-.currentlyReading>.title,.suggestions>.title{
+.myBooks>.content>.lists{
+  border: 2px var(--fulvous) solid;
+
+}
+.currentlyReading>.title,.suggestions>.title,.lists>.title{
   background-color: var(--fulvous);
   color: var(--peach-yellow);
   margin: 0px;
@@ -259,13 +263,83 @@ li{
 .myBooks>.content{
   display:grid;
   grid-template-columns: 1fr 3fr;
+  min-height: 100vh;
 }
 .myBooks>.content>*{
-  border: black 1px solid;
 }
-.myBooks>.content>.currentList{
-  background-color: var(--fulvous);
-}
-.myBooks>.content>.currentList>ul{
 
+
+table{
+  border-collapse: collapse;
+}
+td{
+  border: 1px solid var(--fulvous);
+  
+}
+.deleteText{
+  font-size: 11px;
+}
+
+.listCards{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  text-decoration: underline;
+  padding: 15px;
+  
+
+}
+.listCards>li{
+  display: flex;
+  gap:10px;
+}
+.listCards>li>button{
+  border: 0px;
+}
+.listCards>li>button:hover {
+  box-shadow: 0px 0px 5px 0px var(--fulvous); 
+  border-radius: 5px;
+
+}
+
+.newListForm{
+  display: flex;
+  gap:10px;
+  font-size: 15px;
+  border:0;
+  justify-content: center;
+}
+.newListForm>input,.newListForm>button{
+  border: 1px var(--fulvous) solid;
+  border-radius: 5px;
+  padding:2px 6px;
+}
+
+.newListForm>button{
+  color:var(--fulvous);
+  font-weight: bold;
+}
+.errorList{
+  font-size: 15px;
+  margin-top: 5px;
+  color: var(--rojo);
+}
+th.sorted{
+  text-wrap: nowrap;
+}
+th.sorted>span{
+justify-self: center;
+}
+.currentList{
+  padding: 0 20px;
+}
+.currentList>h2{
+  color: var(--fulvous);
+}
+td{
+  padding: 5px;
+}
+.emptyList{
+  font-size: 15px;
+  color: gray;
 }

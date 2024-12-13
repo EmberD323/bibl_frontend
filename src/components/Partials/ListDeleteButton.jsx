@@ -4,7 +4,8 @@ export default function ListDeleteButton({list,setSelectedList,selectedList}){
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
     const navigate = useNavigate()
     async function handleListDelete(e) {
-        const listID = e.target.parentNode.id;
+        console.log(e.target.parentNode.parentNode)
+        const listID = e.target.parentNode.parentNode.id;
         const response = await fetch(import.meta.env.VITE_BACKEND+"/lists/"+listID, {
             method: "DELETE",
             mode:"cors",
@@ -31,7 +32,7 @@ export default function ListDeleteButton({list,setSelectedList,selectedList}){
     }
     if(list.name == "Currently reading" || list.name == "To be read" || list.name == "Read") return;
     return(
-        <button onClick={handleListDelete}>Delete List</button>
+        <button onClick={handleListDelete}><img width="15" height="15" src="https://img.icons8.com/ios-filled/50/d78521/waste.png" alt="waste"/></button>
 
     )
 }

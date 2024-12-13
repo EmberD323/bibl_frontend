@@ -138,7 +138,14 @@ export default function CurrentList ({selectedList,setSelectedList}){
         setSelectedList(sortedList)
         
     },[])
+    console.log(selectedList)
+    if(selectedList.books[0]==undefined)return(
+        <>
+        <h2>{selectedList.name}</h2>
+        <div className="emptyList">List is empty</div>
+        </>
 
+    )
     return (
         <>
             <h2>{selectedList.name}</h2>
@@ -146,28 +153,23 @@ export default function CurrentList ({selectedList,setSelectedList}){
                 <thead className="heading">
                     <tr>
                         <th></th>
-                        <th>
-                            <div>Title</div>
-                            <img onClick={handleSortTitle} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/f2d398/sort.png" alt="sort"/>
+                        <th className="sorted">Title   <span>
+                                <img onClick={handleSortTitle} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/d78521/sort.png" alt="sort"/>
+                            </span>
+                        </th>
+                        <th className="sorted">Author   <span>
+                                <img onClick={handleSortAuthor} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/d78521/sort.png" alt="sort"/>
+                            </span>
 
                         </th>
-                        <th>
-                            <div>Author</div>
-                            <img onClick={handleSortAuthor} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/f2d398/sort.png" alt="sort"/>
-
+                        <th className="sorted">Date Added   <span>
+                                <img onClick={handleSortDate} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/d78521/sort.png" alt="sort"/>
+                            </span>
                         </th>
-                        <th>
-                            <div>Date Added</div>
-                            <img onClick={handleSortDate} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/f2d398/sort.png" alt="sort"/>
+                        <th className="sorted">Rating   <span>
+                                <img onClick={handleSortRating} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/d78521/sort.png" alt="sort"/>
+                            </span>
                         </th>
-                        <th>
-                            <div>Rating</div>
-                            <img onClick={handleSortRating} width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/f2d398/sort.png" alt="sort"/>
-
-                        </th>
-                        <th>Remove from this list</th>
-                        <th>Remove from all lists</th>
-                        <th>Add to list</th>
                     </tr>
                 </thead>
                 <tbody>

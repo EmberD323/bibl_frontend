@@ -93,8 +93,16 @@ export default function Book({book,selectedList,setSelectedList}) {
             </td>
             <td>{dayMonthYear}</td>
             <td className="rating">{book.book.ratings[0].rating}</td>
-            <td><button onClick={handleRemoveFromList}>Remove from list</button></td>
-            <td><button onClick={handleRemoveFromAllLists}>Remove from all lists</button></td>
+            <td>
+                <button onClick={handleRemoveFromList}><img width="15" height="15" src="https://img.icons8.com/ios-filled/50/d78521/waste.png" alt="waste"/>
+                </button>
+                <div className="deleteText">From this list</div>
+            </td>
+            <td>
+                <button onClick={handleRemoveFromAllLists}><img width="15" height="15" src="https://img.icons8.com/ios-filled/50/d78521/waste.png" alt="waste"/>
+                </button>
+                <div className="deleteText">From all lists</div>
+            </td>
             <td>
                 <AddBook book={book}/>
             </td>
@@ -112,8 +120,16 @@ export default function Book({book,selectedList,setSelectedList}) {
             </td>
             <td>{dayMonthYear}</td>
             <td className="rating">N/A</td>
-            <td><button onClick={handleRemoveFromList}>Remove from list</button></td>
-            <td><button onClick={handleRemoveFromAllLists}>Remove from all lists</button></td>
+            <td>
+                <button onClick={handleRemoveFromList}><img width="15" height="15" src="https://img.icons8.com/ios-filled/50/d78521/waste.png" alt="waste"/>
+                </button>
+                <div className="deleteText">From this list</div>
+            </td>
+            <td>
+                <button onClick={handleRemoveFromAllLists}><img width="15" height="15" src="https://img.icons8.com/ios-filled/50/d78521/waste.png" alt="waste"/>
+                </button>
+                <div className="deleteText">From all lists</div>
+            </td>
             <td>
                 <AddBook book={book}/>
             </td>
