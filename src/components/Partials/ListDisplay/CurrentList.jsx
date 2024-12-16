@@ -138,7 +138,6 @@ export default function CurrentList ({selectedList,setSelectedList}){
         setSelectedList(sortedList)
         
     },[])
-    console.log(selectedList)
     if(selectedList.books[0]==undefined)return(
         <>
         <h2>{selectedList.name}</h2>

@@ -8,7 +8,6 @@ import  ListDeleteButton  from "./Partials/ListDeleteButton";
 export default function MyBooks (){
     const [token,setToken,edit,setEdit,lists,setLists,suggestions,setSuggestions] = useOutletContext();
     const navigate = useNavigate()
-    console.log(lists)
 
     //if user navigated here through clicking a list name, open that list on load
     const { state } = useLocation();
