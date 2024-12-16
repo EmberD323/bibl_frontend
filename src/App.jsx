@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./styles/App.css"
 import { Outlet,useNavigate } from "react-router-dom";
 import NavBar from "./components/Partials/NavBar"
+import Loading from "./components/Loading";
 
 const App = () => {
   const initalToken = localStorage.getItem("token");
@@ -98,7 +99,7 @@ const App = () => {
 
 
   if(error) return <p>Error</p>
-  if(token !=null && loading) return <p>Loading</p>
+  if(token !=null && loading) return <Loading/>
   return (
     <>
       <NavBar token={token} setToken={setToken}/>

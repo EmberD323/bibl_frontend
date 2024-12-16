@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useOutletContext,useNavigate } from "react-router-dom";
 import Errors from "../Partials/Errors"
+import loadingImage from "../../assets/icons8-loading-60.png"
+
 export default function Login (){
     const[username,setUsername] = useState("");
     const[password,setPassword] = useState("");
     const[formErrors,setFormErrors] = useState(null);
     const [token,setToken,edit,setEdit,lists,setLists] = useOutletContext();
+    const [loading,setLoading] = useState(false);
+
 
     function handleUsernameChange(e){
         setUsername(e.target.value)
@@ -17,6 +21,8 @@ export default function Login (){
     const navigate = useNavigate()
     //submit login details to db
     async function handleSubmit(e){
+        setLoading(true)
+
         e.preventDefault();
         try {
             const response = await fetch(import.meta.env.VITE_BACKEND +"/login", {
@@ -28,6 +34,7 @@ export default function Login (){
               body: JSON.stringify({username,password}),
             }); 
             if(response.status != 200){
+                setLoading(false)
                 const json = await response.json();
                 setFormErrors(json.errors)
             }else{ 
@@ -58,7 +65,10 @@ export default function Login (){
                     <input type="password" name="password" id="password" value={password} onChange={handlePasswordChange} required/>
                 </div>
                 <button type="submit">Log in</button>
-                <Errors errors={formErrors}/>
+                <div className="imageAndError">
+                    <img className="loadingImage" id={String(loading)}src={loadingImage} alt="loading" />
+                    <Errors errors={formErrors}/>
+                </div>
     
             </form>
             <div>Or, use these dummy account credentials to try out the app:</div>

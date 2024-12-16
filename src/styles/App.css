@@ -491,3 +491,37 @@ form.addBook{
   border-radius: 5px;
   padding:2px 6px;
 }
+
+.loading{
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px;
+  justify-content: center;
+  font-size: 25px;
+}
+.loadingImage{
+  width: 75px;
+  animation: rotating 2s linear  infinite ;
+}
+@keyframes rotating { 
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+.loadingImage#false{
+  display: none;
+}
+.loadingImage#true{
+  width:50px
+}
+.imageAndError{
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

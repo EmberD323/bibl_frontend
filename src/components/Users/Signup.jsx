@@ -1,6 +1,7 @@
 import {  useState } from "react";
 import {useNavigate } from "react-router-dom";
 import Errors from "../Partials/Errors";
+import loadingImage from "../../assets/icons8-loading-60.png"
 
 export default function SignUp (){
     const[first_name,setFirstName] = useState("");
@@ -9,6 +10,7 @@ export default function SignUp (){
     const[password,setPassword] = useState("");
     const[passwordConfirm,setPasswordConfirm] = useState("");
     const[formErrors,setFormErrors] = useState(null);
+    const [loading,setLoading] = useState(false);
 
     function handleFirstNameChange(e){
         setFirstName(e.target.value)
@@ -30,6 +32,8 @@ export default function SignUp (){
     //send signup data to db
     async function handleSubmit(e){
         e.preventDefault();
+        setLoading(true);
+
         try {
             const response = await fetch(import.meta.env.VITE_BACKEND + "/signup", {
               method: "POST",
@@ -40,6 +44,7 @@ export default function SignUp (){
               body: JSON.stringify({ first_name,last_name,username,password,passwordConfirm }),
             });
             if(response.status != 200){
+                setLoading(false);
                 const json = await response.json();
                 setFormErrors(json.errors)
             }else{ 
@@ -74,7 +79,10 @@ export default function SignUp (){
                     <input type="password" name="passwordConfirm" id="passwordConfirm" value={passwordConfirm} onChange={handlePasswordConfirmChange} required/>
                 </div>
                 <button type="submit" >Submit</button>
-                <Errors errors={formErrors}/>
+                <div className="imageAndError">
+                    <img className="loadingImage" id={String(loading)}src={loadingImage} alt="loading" />
+                    <Errors errors={formErrors}/>
+                </div>
 
             </form>
             
