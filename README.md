@@ -1,6 +1,10 @@
-# Bibl - Front-end
+# Bibl - About
 
-This the front-end website for a book tracking application.
+This is the front-end website for a book tracking application.
+
+![image](https://github.com/user-attachments/assets/ea16cd5b-db37-49c9-a04c-f3f5f10c9de5)
+
+
 
 # Deployed
 - https://biblemberd232.netlify.app/
